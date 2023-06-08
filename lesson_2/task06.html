@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 6</title>
+</head>
+<body>
+	<main class="page-task06">
+		<section class="page-task05__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task06.html" class="list__link">
+						<h2 class="list__title">Задача 6</h2>
+						<p>
+							З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 6: З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+					//1. Введення даних: вартість товару та кількість одиниць 3 товарів невідома, тому потрібно щоб користувач її ввів:
+					let quantityOfMilk = parseInt(prompt('Будь ласка, введіть кількість упаковок молока, шт.', '0'));
+					let quantityOfBread = parseInt(prompt('Будь ласка, введіть кількість хліба, шт.', '0'));
+					let quantityOfIceCream = parseInt(prompt('Будь ласка, введіть кількість морозива, шт.', '0'));
+					let priceOfMilk = parseFloat(prompt('Будь ласка, введіть ціну за одну упаковку молока', '0'));
+					let priceOfBread = parseFloat(prompt('Будь ласка, введіть ціну за однуодиницю хліба', '0'));
+					let priceOfIceCream = parseFloat(prompt('Будь ласка, введіть ціну за одну упаковку морозива', '0'));
+
+					//2. Розрахунок загальної ціни для кожного товару окремо
+					let totalPriceOfMilk = quantityOfMilk * priceOfMilk;
+					let totalPriceOfBread = quantityOfBread * priceOfBread;
+					let totalPriceOfIceCream = quantityOfIceCream * priceOfIceCream;
+
+					//3. Рохрахунок загальної ціни для всіх товарів
+					let totalPrice = totalPriceOfMilk + totalPriceOfBread + totalPriceOfIceCream;
+					
+					//4. Виведення результатів
+					document.write(`
+						<div class="solution__list list ">
+							<div class="list__item">
+								<h2 class="list__title">Результати:</h2>
+								<table>
+									<thead>
+										<tr>
+											<th>Найменування товару</th>
+											<th>Кількість, шт.</th>
+											<th>Вартість за одиницю.</th>
+											<th>Сума</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Молоко</td>
+											<td>${quantityOfMilk}</td>
+											<td>${priceOfMilk}</td>
+											<td>${totalPriceOfMilk}</td>
+										</tr>
+										<tr>
+											<td>Хліб</td>
+											<td>${quantityOfBread}</td>
+											<td>${priceOfBread}</td>
+											<td>${totalPriceOfBread}</td>
+										</tr>
+										<tr>
+											<td>Морозиво</td>
+											<td>${quantityOfIceCream}</td>
+											<td>${priceOfIceCream}</td>
+											<td>${totalPriceOfIceCream}</td>
+										</tr>
+										<tr>
+											<td>Загальна сума:</td>
+											<td>..................</td>
+											<td>..................</td>
+											<td>${totalPrice}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					`);
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
