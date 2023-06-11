@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 4</title>
+</head>
+<body>
+	<main class="page-task04">
+		<section class="page-task04__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task04.html" class="list__link">
+						<h2 class="list__title">Задача 4</h2>
+						<p>
+							З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 4: З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
+					//1. Введення даних:
+					let userAge = parseInt(prompt('Будь ласка, введіть ваш вік:', '1')); //Вік людини, який вводить користувач
+					//2. Перевіряємо умову: якщо введене число знаходиться у потрібному діапазоні, то виводимо відповідну розмітку
+					if (userAge >= 3 && userAge < 7) {
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p>Відповідь: Дитина у садочку</p>
+								</div>
+							</div>
+						`);
+					} else if (userAge >= 7 && userAge < 18) {
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p>Відповідь: Школяр</p>
+								</div>
+							</div>
+						`);
+					} else if (userAge >= 18 && userAge < 23) {
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p>Відповідь: Студент</p>
+								</div>
+							</div>
+						`);
+					} else if (userAge >= 24 && userAge < 60) {
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p>Відповідь: Працівник</p>
+								</div>
+							</div>
+						`);
+					} else if (userAge >= 60){
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p>Відповідь: Пенсіонер</p>
+								</div>
+							</div>
+						`);
+					} else {
+						alert('Будь ласка, оновіть сторінку і введіть реальний вік (мінімальний вік: 3 роки)');
+					}
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

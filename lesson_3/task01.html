@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 1</title>
+</head>
+<body>
+	<main class="page-task01">
+		<section class="page-task01__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task01.html" class="list__link">
+						<h2 class="list__title">Задача 1</h2>
+						<p>
+							З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 1: З клавіатури вводяться імена двох дітей та кількість у них цукерок. Вивести не екран ім’я тієї дитини, у якої кількість цукерок є більшою, або вивести, що кількість однакова.
+					//1. Введення даних: 
+					let firstChild = prompt('Будь ласка, введіть ім’я першої дитини:'); //ім’я першої дитини
+					let secondChild = prompt('Будь ласка, введіть ім’я другої дитини:'); //ім’я другої дитини
+					let firstChildsQuantityOfCandies = parseInt(prompt('Будь ласка, введіть кількість цукерок, які має перша дитина:', '0')); //кількість цукерок, які має перша дитина
+					let secondChildsQuantityOfCandies = parseInt(prompt('Будь ласка, введіть кількість цукерок, які має друга дитина:', '0')); //кількість цукерок, які має друга дитина
+
+					//2. Знаходимо у якої дитини більше цукерок і виводимо на сторінці
+					//2.1 Якщо перша дитина має більше цукерок ніж друга:
+					if (firstChildsQuantityOfCandies > secondChildsQuantityOfCandies) {
+						document.write(`
+						<div class="solution__list list ">
+							<div class="list__item">
+								<h2 class="list__title">Результати:</h2>
+								<p>${firstChild} має ${firstChildsQuantityOfCandies} цукерок</p>
+								<p>${secondChild} має ${secondChildsQuantityOfCandies} цукерок</p>
+								<p class="list__result-text"><span>${firstChild}</span> має <span>більше</span> цукерок</p>
+							</div>
+						</div>
+						`);
+					//2.2 Якщо друга дитина має більше цукерок ніж перша:
+					} else if (firstChildsQuantityOfCandies < secondChildsQuantityOfCandies){
+						document.write(`
+						<div class="solution__list list ">
+							<div class="list__item">
+								<h2 class="list__title">Результати:</h2>
+								<p>${firstChild} має ${firstChildsQuantityOfCandies} цукерок</p>
+								<p>${secondChild} має ${secondChildsQuantityOfCandies} цукерок</p>
+								<p class="list__result-text"><span>${secondChild}</span> має <span>більше</span> цукерок</p>
+							</div>
+						</div>
+						`);
+					//2.1 Якщо обидві дитини мають однакову кількість цукерок:
+					} else if (firstChildsQuantityOfCandies === secondChildsQuantityOfCandies){
+						document.write(`
+						<div class="solution__list list ">
+							<div class="list__item">
+								<h2 class="list__title">Результати:</h2>
+								<p>${firstChild} має ${firstChildsQuantityOfCandies} цукерок</p>
+								<p>${secondChild} має ${secondChildsQuantityOfCandies} цукерок</p>
+								<p class="list__result-text"><span>${firstChild}</span> і <span>${secondChild}</span> мають <span>однакову кількість</span> цукерок</p>
+							</div>
+						</div>
+						`);
+					}
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+</html>

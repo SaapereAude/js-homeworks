@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 6</title>
+</head>
+<body>
+	<main class="page-task06">
+		<section class="page-task05__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task06.html" class="list__link">
+						<h2 class="list__title">Задача 6</h2>
+						<p>
+							З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 6: З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+					//1. Введення даних: 
+					let dayNumber = prompt('Будь ласка, введіть номер дня (від 1 до 7):', '7'); //номер дня, який вводить користувач
+					//Константи з днями тижня
+					const DAY_MONDAY = '1'; 
+					const DAY_TUESDAY = '2';
+					const DAY_WEDNESDAY = '3';
+					const DAY_THURSDAY = '4';
+					const DAY_FRIDAY = '5';
+					const DAY_SATURDAY = '6';
+					const DAY_SUNDAY = '7';
+
+					//2.Перевіряємо умову: якщо введене число знаходиться у потрібному діапазоні, то виводимо відповідну розмітку
+					switch (dayNumber) {
+						case DAY_MONDAY: document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели ${dayNumber}. Це <span>Понеділок</span></p>
+								</div>
+							</div>
+						`);
+						break;
+						case DAY_TUESDAY: document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели ${dayNumber}. Це <span>Вівторок</span></p>
+								</div>
+							</div>
+						`);
+						break;
+						case DAY_WEDNESDAY: document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели ${dayNumber}. Це <span>Середа</span></p>
+								</div>
+							</div>
+						`);
+						break;
+						case DAY_THURSDAY: document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели ${dayNumber}. Це <span>Четвер</span></p>
+								</div>
+							</div>
+						`);
+						break;
+						case DAY_FRIDAY: document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели ${dayNumber}. Це <span>П’ятниця</span></p>
+								</div>
+							</div>
+						`);
+						break;
+						case DAY_SATURDAY: document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели ${dayNumber}. Це <span>Субота</span></p>
+								</div>
+							</div>
+						`);
+						break;
+						case DAY_SUNDAY: document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели ${dayNumber}. Це <span>Неділя</span></p>
+								</div>
+							</div>
+						`);
+						break;
+						default:
+							alert('Будь ласка, введіть корректне числи від 1 до 7');
+							break;
+					}
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
