@@ -23,41 +23,71 @@
 					"use strict"
 					//Задача 5: З клавіатури вводиться назва категорії водія (А-мотоцикл, В-легковий автомобіль, С-вантажний автомобіль). Вивести на екран назву транспортного засобу, яким він може керувати.
 					//1. Введення даних:
+					// let driverCategory = prompt('Будь ласка, введіть назву вашої категорії (латинскьими літерами у верхньому регістрі):'); //Назва категорії водія
+					// const CATEGORY_A = 'A'; //константа для категорії А
+					// const CATEGORY_B = 'B'; //константа для категорії В
+					// const CATEGORY_C = 'C'; //константа для категорії С
+					// //2.Перевіряємо умову: якщо введена категорія знаходиться у потрібному діапазоні, то виводимо відповідну розмітку
+					// switch (driverCategory) {
+					// 	case CATEGORY_A: document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p class="list__result-text">Категорія ${CATEGORY_A}: Ви можете керувати <span>мотоциклами</span></p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// 	break;
+					// 	case CATEGORY_B: document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p class="list__result-text">Категорія ${CATEGORY_B}: Ви можете керувати <span>легковими автомобілями</span></p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// 	break;
+					// 	case CATEGORY_C: document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p class="list__result-text">Категорія ${CATEGORY_C}: Ви можете керувати <span>вантажними автомобілями</span></p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// 	break;
+					// }
+					//========================================================================================================================================================
+					// Після віправлень - правильне рішення//=================================================================================================================
+					//========================================================================================================================================================
+					//1. Введення даних:
 					let driverCategory = prompt('Будь ласка, введіть назву вашої категорії (латинскьими літерами у верхньому регістрі):'); //Назва категорії водія
 					const CATEGORY_A = 'A'; //константа для категорії А
 					const CATEGORY_B = 'B'; //константа для категорії В
 					const CATEGORY_C = 'C'; //константа для категорії С
-
+					let categoryClass
+					let category
 					//2.Перевіряємо умову: якщо введена категорія знаходиться у потрібному діапазоні, то виводимо відповідну розмітку
 					switch (driverCategory) {
-						case CATEGORY_A: document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p class="list__result-text">Категорія ${CATEGORY_A}: Ви можете керувати <span>мотоциклами</span></p>
-								</div>
-							</div>
-						`);
-						break;
-						case CATEGORY_B: document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p class="list__result-text">Категорія ${CATEGORY_B}: Ви можете керувати <span>легковими автомобілями</span></p>
-								</div>
-							</div>
-						`);
-						break;
-						case CATEGORY_C: document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p class="list__result-text">Категорія ${CATEGORY_C}: Ви можете керувати <span>вантажними автомобілями</span></p>
-								</div>
-							</div>
-						`);
-						break;
+						case CATEGORY_A:
+							category = 'мотоциклами'
+							break;
+						case CATEGORY_B:				
+							category = 'легковими автомобілями'
+							break;
+						case CATEGORY_C:
+							category = 'вантажними автомобілями'
+							break;
+						default: category = 'Введіть корректне значеняв'
 					}
+					document.write(`
+							<div class="solution__list list ">
+							<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Категорія: ${driverCategory}. Ви можете керувати <span>${category}</span></p>
+								</div>
+							</div>
+						`);	
 				</script>
 			</div>
 		</section>		
