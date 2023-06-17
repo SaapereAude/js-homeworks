@@ -22,57 +22,83 @@
 				<script>
 					"use strict"
 					//Задача 4: З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом, працівником, пенсіонером).
-					//1. Введення даних:
-					let userAge = parseInt(prompt('Будь ласка, введіть ваш вік:', '1')); //Вік людини, який вводить користувач
-					//2. Перевіряємо умову: якщо введене число знаходиться у потрібному діапазоні, то виводимо відповідну розмітку
-					if (userAge >= 3 && userAge < 7) {
-						document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p>Відповідь: Дитина у садочку</p>
-								</div>
-							</div>
-						`);
-					} else if (userAge >= 7 && userAge < 18) {
-						document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p>Відповідь: Школяр</p>
-								</div>
-							</div>
-						`);
-					} else if (userAge >= 18 && userAge < 23) {
-						document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p>Відповідь: Студент</p>
-								</div>
-							</div>
-						`);
-					} else if (userAge >= 24 && userAge < 60) {
-						document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p>Відповідь: Працівник</p>
-								</div>
-							</div>
-						`);
-					} else if (userAge >= 60){
-						document.write(`
-							<div class="solution__list list ">
-								<div class="list__item">
-									<h2 class="list__title">Результати:</h2>
-									<p>Відповідь: Пенсіонер</p>
-								</div>
-							</div>
-						`);
+					// //1. Введення даних:
+					// let userAge = parseInt(prompt('Будь ласка, введіть ваш вік:', '1')); //Вік людини, який вводить користувач
+					// //2. `
+					// if (userAge >= 3 && userAge < 7) {
+					// 	document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p>Відповідь: Дитина у садочку</p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// } else if (userAge >= 7 && userAge < 18) {
+					// 	document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p>Відповідь: Школяр</p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// } else if (userAge >= 18 && userAge < 23) {
+					// 	document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p>Відповідь: Студент</p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// } else if (userAge >= 24 && userAge < 60) {
+					// 	document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p>Відповідь: Працівник</p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// } else if (userAge >= 60){
+					// 	document.write(`
+					// 		<div class="solution__list list ">
+					// 			<div class="list__item">
+					// 				<h2 class="list__title">Результати:</h2>
+					// 				<p>Відповідь: Пенсіонер</p>
+					// 			</div>
+					// 		</div>
+					// 	`);
+					// } else {
+					// 	alert('Будь ласка, оновіть сторінку і введіть реальний вік (мінімальний вік: 3 роки)');
+					// }
+					//========================================================================================================================================================
+					// Після віправлень - правильне рішення//=================================================================================================================
+					//========================================================================================================================================================
+					const userAge = parseInt(prompt('Будь ласка, введіть ваш вік:', '1'));
+					let result
+					if (userAge < 1 || userAge > 150) {
+						result = 'Некорректний вік'
+					} else if (userAge <= 7) {
+						result = 'Дитина у садочку'
+					} else if (userAge <= 17) {
+						result = 'Дитина у школі'
+					} else if (userAge <= 22) {
+						result = 'Студент'
+					} else if (userAge <= 65) {
+						result = 'Працівник'
 					} else {
-						alert('Будь ласка, оновіть сторінку і введіть реальний вік (мінімальний вік: 3 роки)');
+						result = 'Пенсіонер'
 					}
+					document.write(`
+						<div class="solution__list list ">
+							<div class="list__item">
+								<h2 class="list__title">Результати:</h2>
+								<p>Відповідь: ${result}</p>
+							</div>
+						</div>
+					`);
 				</script>
 			</div>
 		</section>
