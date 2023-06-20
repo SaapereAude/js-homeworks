@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 5</title>
+</head>
+
+<body>
+	<main class="page-task05">
+		<section class="page-task05__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task05.html" class="list__link">
+						<h2 class="list__title">Задача 5</h2>
+						<p>
+							Вивести таблицю з 3 рядків і 3 стовпців, але так щоб кожна комірка рахувалася по порядку зліва направо, згори вниз
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 5: Вивести таблицю з 3 рядків і 3 стовпців, але так щоб кожна комірка рахувалася по порядку зліва направо, згори вниз
+					let cell = 1
+					document.write('<table>')
+					for (let i = 0; i < 3; i++) {
+						document.write('<tr>')
+						for (let j = 1; j <= 3; j++) {
+							document.write(`<td> ${cell++} </td>`)
+						}
+						document.write('</tr>')
+					}
+					document.write('</table>')
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

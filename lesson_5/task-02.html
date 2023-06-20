@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task -2</title>
+</head>
+
+<body>
+	<main class="page-task-02">
+		<section class="page-task-02__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task-02.html" class="list__link">
+						<h2 class="list__title">Задача -2</h2>
+						<p>
+							Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи
+							непарних.
+						</p>
+					</a>
+				</div>
+
+				<script>
+					"use strict"
+					//Задача -2: Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи непарних.
+					//1. Введення даних:
+					const minValue = 1 //Мінімальне значення для генератора випадкових чисел
+					const maxValue = 1000 //Максимальне значення для генератора випадкових чисел
+					let evenNumber = 0 //змінна для лічильника парних чисел
+					let oddNumber = 0 //змінна для лічильника непарних чисел
+					let randNumber //змінна для генератора випадкових чисел від 1 до 1000
+					let result = ''
+
+					//2. Будуємо цикл для генераціїї 100 випадкових чисел і підрахунку парних і непарних чисел
+					for (let i = 1; i <= 100; i++) {
+						//3. Генеруємо випадкове число від 1 до 1000
+						randNumber = minValue + Math.floor(Math.random() * (maxValue - minValue + 1));
+						//4. Виводимо всі випадкові числа
+						result += `${i}: ${randNumber} <br>`
+						// document.write(`${i}: ${randNumber} <br> `)
+						//5. Якщо число парне, то його остача від ділення будет дорівнювати 0 - додаємо його до змінної evenNumber, у протилежному випадку це буде непарне число - додаємо його до змінної oddNumber
+						if (randNumber % 2 === 0) {
+							evenNumber++
+						} else {
+							oddNumber++
+						}
+					}
+					//6. Виводимо загальну кількість парних и непарних чисел у розмітці:
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Парні числа: <span>${evenNumber}</span></p>
+									<p class="list__result-text">Парні числа: <span>${oddNumber}</span></p>
+									<p>Випадкові числа: </p>
+										${result}
+								</div>
+							</div>
+						`);
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

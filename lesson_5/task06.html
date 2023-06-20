@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 6</title>
+</head>
+
+<body>
+	<main class="page-task06">
+		<section class="page-task06__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task06.html" class="list__link">
+						<h2 class="list__title">Задача 6</h2>
+						<p>
+							Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній), але так щоб кожна комірка рахувалася по
+							порядку зліва направо, згори вниз
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 6: Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній), але так щоб кожна комірка рахувалася по порядку зліва направо, згори вниз
+
+					let cell = 1
+					for (let table = 0; table < 3; table++) {
+						document.write('<table>')
+						for (let i = 0; i < 3; i++) {
+							document.write('<tr>')
+							for (let j = 1; j <= 3; j++) {
+								document.write(`<td> ${cell++} </td>`)
+							}
+							document.write('</tr>')
+						}
+						document.write('</table>')
+					}
+
+				</script>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

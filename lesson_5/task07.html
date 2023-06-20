@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 7</title>
+</head>
+
+<body>
+	<main class="page-task07">
+		<section class="page-task07__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task07.html" class="list__link">
+						<h2 class="list__title">Задача 7</h2>
+						<p>
+							Вивести на екран N абзаців (N вводиться користувачем)
+						</p>
+					</a>
+
+				</div>
+				<script>
+					"use strict"
+					//Задача 7: Вивести на екран N абзаців (N вводиться користувачем)
+					let numParagraph = parseInt(prompt('Будь ласка введіть скільки абзаців потрібно вивести на екран:', '4'))
+					let layout = '';
+
+					for (let i = 1; i <= numParagraph; i++) { // Будуємо цикл, завдяки якому буде виводитися відповідна кількість абзаців (numParagraph)
+						layout += `<h1>Заголовок ${i}</h1>`
+						for (let j = 1; j <= i; j++) { // Будуємо цикл, завдяки якому буде виводитися відповідна кількість розділів, та з нумерацією кожного параграфа (j) та розділу (i)
+							layout += `<p>Розділ ${i}, параграф ${j}</p>`
+						}
+						if (i <= numParagraph) { //по закінченню виконня циклу (коли кількість абзаців буде менша або рівна кількості введених користувачем обзаців, тобто це умова виконання першого циклу) виводимо тег <hr> який відокремить абзаци один від одного
+							layout += '<hr>'
+						}
+					}
+
+					document.write(`${layout}`)
+				</script>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

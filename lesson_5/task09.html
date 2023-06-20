@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 9</title>
+</head>
+
+<body>
+	<main class="page-task09">
+		<section class="page-task09__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task09.html" class="list__link">
+						<h2 class="list__title">Задача 9</h2>
+						<p>
+							Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).
+						</p>
+					</a>
+
+				</div>
+				<script>
+					"use strict"
+					//Задача 9: Користувач загадує число. Комп’ютер задає питання поки не вгадає число користувача (використати confirm).
+					let userNumber = parseInt(prompt('Будь ласка загадайте число від 1 до 10'))
+					const minNumber = 1
+					const maxNumber = 10
+					let isGuessed = false
+					let guessNumber, compNumber
+
+					while (compNumber !== userNumber) {
+						compNumber = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1));
+						guessNumber = confirm(`Число: ${compNumber}. Я вгадав?`)
+						if (guessNumber){
+							isGuessed = true
+							break
+						} 
+					}
+					if (isGuessed){
+						alert(`Ура! Я вгадав!`)
+					}else {
+						alert(`Нажаль я не вмію читати думки :(`)
+					}
+				</script>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>
