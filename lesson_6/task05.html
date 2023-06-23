@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 5</title>
+</head>
+
+<body>
+	<main class="page-task05">
+		<section class="page-task05__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task05.html" class="list__link">
+						<h2 class="list__title">Задача 5</h2>
+						<p>
+							Інвестор вклав S тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він
+							одержить (без оподаткування).
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 5: Інвестор вклав S тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без оподаткування).
+					let userDeposit = parseFloat(prompt('Будь ласка вкажіть кількість грошей, яку ви вклали (тис. грн)')) * 1000; //так як в умові задачі сказано що користувач вводить суму грошей у тосячах грн, то тут користувач повинен ввести суму в тисячах грн, тобтно якщо він введе 2, то це має бути 2000грн, тому у цій зменній ми множимо введене число на 1000
+					const numberOfYears = 20;
+					const interestRate = 20; //річні відсотки
+					let result = '' //змінна для виводу результату за кожний рік
+					for (let i = 1; i <= numberOfYears; i++) {
+						userDeposit += userDeposit * interestRate / 100 //сума грошей за 20 років
+						result += `${i}:  ${userDeposit.toFixed(2)} грн <br> ` //сума грошей за кожний рік на протязі 20 років
+					}
+
+
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Сума за ${numberOfYears} років: <span>${userDeposit.toFixed(2)} грн</span></p>	
+									<p>За кожний рік: </p>
+									${result} 
+								</div>
+							</div>
+						`);
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

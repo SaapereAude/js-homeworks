@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 11</title>
+</head>
+
+<body>
+	<main class="page-task11">
+		<section class="page-task11__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task11.html" class="list__link">
+						<h2 class="list__title">Задача 11</h2>
+						<p>
+							Комп’ютер загадує випадкове число від 1 до 10. Вгадати число шляхом введеня можливих варіантів. В кінці вивести кількість спроб користувача. 
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 11: Комп’ютер загадує випадкове число від 1 до 10. Вгадати число шляхом введеня можливих варіантів. В кінці вивести кількість спроб користувача. 
+					const minNumber = 1
+					const maxNumber = 10
+					const compNumber = minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1));
+					console.log(compNumber); //виводить у консоль згенероване число (для зручності перевірки) 
+
+					let userAttempts = 0 //змінна для зберігання кількості спроб користувача
+					let userNumber // змінна для числа яке вводить користувач
+					while (userNumber !== compNumber){
+						userNumber = parseInt(prompt ('Будь ласа введіть число від 1 до 10'))
+						userAttempts++
+					}
+					if(userNumber === compNumber){
+							alert(`Вам знадобилося ${userAttempts} спроб(и), щоб вгадати число`)
+						}
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

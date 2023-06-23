@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 10</title>
+</head>
+
+<body>
+	<main class="page-task10">
+		<section class="page-task10__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task10.html" class="list__link">
+						<h2 class="list__title">Задача 10</h2>
+						<p>
+							З клавіатури вводиться вартість одиниці товару. Поки користувач не введе суму грошей, яка достатня для купівлі товару або не відмовиться від купівлі давати можливість вводити суму грошей.
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 10: З клавіатури вводиться вартість одиниці товару. Поки користувач не введе суму грошей, яка достатня для купівлі товару або не відмовиться від купівлі давати можливість вводити суму грошей.
+					const productPrice = parseFloat(prompt('Будь ласка введіть вартість одиниці товару'))
+					let userMoney
+					let userMoneySum = 0
+
+					while (userMoneySum < productPrice || userMoney === false){
+						userMoney = parseFloat(prompt('Будь ласка введіть кількість грошей'))
+						userMoneySum += userMoney 
+					}
+					if (userMoneySum >= productPrice) alert('Вітаю! Цих грошей достатньо для покупки товару!')
+
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>
