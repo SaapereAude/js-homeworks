@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 8</title>
+</head>
+
+<body>
+	<main class="page-task8">
+		<section class="page-task8__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task08.html" class="list__link">
+						<h2 class="list__title">Задача 8</h2>
+						<p>
+							Створити функцію, яка виводить банер у функцію передаються: зображення, заголовок та посилання,
+							куди переходимо при кліку на зображення тег img повине знаходитись у середині тега a
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 8: Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <a> <img src=”шлях”> </a>
+
+					let bannerImagePath = 'img/google_2015_logo.png'
+					let bannerLink = 'https://www.google.com/'
+					let bannerTitle = 'Найпопулярніша пошукова система'
+
+					let showBanner = (image, link, title) =>{
+						document.write(`<div class="banner">`)
+							document.write(`
+								<a href="${bannerLink}" target="_blank" class="banner__link">
+									<img src="${bannerImagePath}" alt="google">
+								</a>
+							`)
+							document.write(`<h2 class="banner__subtitle">${title}</h2>`)
+						document.write(`</div>`)
+					}
+					showBanner(bannerImagePath, bannerLink, bannerTitle)
+
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

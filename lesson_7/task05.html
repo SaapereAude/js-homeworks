@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 5</title>
+</head>
+
+<body>
+	<main class="page-task5">
+		<section class="page-task5__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task05.html" class="list__link">
+						<h2 class="list__title">Задача 5</h2>
+						<p>
+							Створити окремі функції, які переводять: сантиметри у дюйми, кілограми у фунти, кілометри у милі
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 5: Створити окремі функції, які переводять: сантиметри у дюйми, кілограми у фунти, кілометри у милі
+
+					let getInches = centimeters => {
+						return (centimeters * 0.393701).toFixed(2)
+					}
+
+					let getLb = kilograms => {
+						return (kilograms * 0.453592).toFixed(2)
+					}
+
+					let getMiles = kilometers => {
+						return (kilometers * 0.621371).toFixed(2)
+					}
+					const userCentimeters = parseFloat(prompt('Будь ласка введіть довжину у сантиметрах:'))
+					const userKilograms = parseFloat(prompt('Будь ласка введіть вагу у кілограмах:'))
+					const userKilometers = parseFloat(prompt('Будь ласка введіть довжину у кілометрах:'))
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">${userCentimeters} см - це <span>${getInches(userCentimeters)}</span> дюймів</p>
+									<p class="list__result-text">${userKilograms} кг - це <span>${getLb(userKilograms)}</span> фунтів</p>
+									<p class="list__result-text">${userKilometers} км - це <span>${getMiles(userKilometers)}</span> миль</p>
+								</div>
+							</div>
+						`);
+
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

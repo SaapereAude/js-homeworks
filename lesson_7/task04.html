@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 4</title>
+</head>
+
+<body>
+	<main class="page-task4">
+		<section class="page-task10__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task04.html" class="list__link">
+						<h2 class="list__title">Задача 4</h2>
+						<p>
+							Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість
+							парних, кількість додатних, кількість більших за 100.
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 4: Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість більших за 100.
+
+					// В умові сказано, що потрібно побудувати тільки одну функцію, яка повертає одночасно 3 результати, тому функція лише одна:
+					const getSortNumbers = (num1, num2, num3) => {
+						// Змінні для зберігання реузльтатів для кожного з трьох випадків:
+						let evenNumbers = 0 //змінна для обчислення кількості парних чисел
+						let positiveNumbers = 0 //змінна для обчислення кількості додатних чисел
+						let moreThanHundred = 0 //змінна для обчислення кількості чисел більших за 100
+
+						// Рахуємо кількість парних чисел
+						if (num1 % 2 === 0) evenNumbers++
+						if (num2 % 2 === 0) evenNumbers++
+						if (num3 % 2 === 0) evenNumbers++
+
+						// Рахуємо кількість додатних чисел
+						if (num1 > 0) positiveNumbers++
+						if (num2 > 0) positiveNumbers++
+						if (num3 > 0) positiveNumbers++
+
+						// Рахуємо кількість чисел, які більші за 100
+						if (num1 > 100) moreThanHundred++
+						if (num2 > 100) moreThanHundred++
+						if (num3 > 100) moreThanHundred++
+
+						return [evenNumbers, positiveNumbers, moreThanHundred] //повернення реузультатів обчислень у масив
+					}
+
+					//Числа, які вводить користувач:
+					const userNum1 = parseFloat(prompt('Будь ласка введіть перше число:'))
+					const userNum2 = parseFloat(prompt('Будь ласка введіть друге число:'))
+					const userNum3 = parseFloat(prompt('Будь ласка введіть третє число:'))
+
+					const result = getSortNumbers(userNum1, userNum2, userNum3) //константа для отримання результатів з функціїї
+
+					//Вивід результатів:
+					//Так як результат функції повертається у масиві, то звертаємося до кожного елементу масиву окремо (по індексу), щоб вивести результат окремої дії 
+					document.write(`
+						<div class="solution__list list ">
+							<div class="list__item">
+								<h2 class="list__title">Результати:</h2>
+								<p class="list__result-text">Ви ввели: ${userNum1}, ${userNum2}, ${userNum3}</span></p>
+								<p class="list__result-text">Кількість парних чисел: <span>${result[0]}</span></p> 
+								<p class="list__result-text">Кількість додатних чисел: <span>${result[1]}</span></p>
+								<p class="list__result-text">Кількість чисел більших за 100: <span>${result[2]}</span></p>
+							</div>
+						</div>
+					`);
+
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

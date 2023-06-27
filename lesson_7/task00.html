@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 0</title>
+</head>
+
+<body>
+	<main class="page-task00">
+		<section class="page-task00__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task00.html" class="list__link">
+						<h2 class="list__title">Задача 0</h2>
+						<p>
+							Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 0: Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+					//Тут я взяв рішення з задачі №7 з ДЗ№3 (я її виправив відповідно до ваших зауважень, дуже дякую за ваші перевірки :))
+					let getSeason = monthNumber => {
+						let season
+						switch (monthNumber) {
+							case '12':
+							case '1':
+							case '2':
+								season = 'зима'
+								break;
+							case '3':
+							case '4':
+							case '5':
+								season = 'весна'
+								break;
+							case '6':
+							case '7':
+							case '8':
+								season = 'літо'
+								break;
+							case '9':
+							case '10':
+							case '11':
+								season = 'осінь'
+								break;
+							default:
+								alert('Будь ласка, введіть корректне число від 1 до 12');
+								break;
+						}
+						return season
+					}
+					let monthNumber = prompt('Будь ласка, введіть номер місяця (від 1 до 12):', '6'); //номер місяця, який вводить користувач
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели: ${monthNumber} - це <span>${getSeason(monthNumber)}</span></p>
+								</div>
+							</div>
+						`);
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

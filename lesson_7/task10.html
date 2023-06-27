@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 10</title>
+</head>
+
+<body>
+	<main class="page-task10">
+		<section class="page-task10__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task10.html" class="list__link">
+						<h2 class="list__title">Задача 10</h2>
+						<p>
+							Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє
+							значення для додатних показів температури.
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 10: Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів температури.
+					const getAveragePositiveTemperatureValues = numOfIndications => {
+						let positiveNumbersCount = 0 //лічильник який рахує кількість додатних чисел
+						let positiveSum = 0 //змінна для зберігання загальної суми додатних чисел
+						for (let i = 1; i <= numOfIndications; i++) { //будуємо цикл який буде запитувати користувача про показники температури стільки раз, скільки він сам вкаже (задаєся у userIndications) і знаходження додатних показників та іх загальної суми
+							let temperature = parseFloat(prompt(`Будь ласка введіть показник температури №${i}:`)) //змінна для показників температур які вводить користувач
+							if (temperature > 0) { //якщо показник температури більший за 0, то додаємо його до лічильника і додаємо до загальноїї суми доданих чисел ще й цей показник
+								positiveNumbersCount++
+								positiveSum += temperature
+							}
+						}
+						const averageTemperature = positiveSum / positiveNumbersCount //загальну суму додатних показників температури ділимо на кількість показників и отримуємо серднє значення, яке присвоюється константі
+						return averageTemperature //результат функції - це середнє значення додатних показників температури
+					}
+					let userIndications = parseInt(prompt(`Будь ласка введіть кількість показників яка у вас є:`))
+
+					
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Кількість показників: <span>${userIndications}</span></p>
+									<p class="list__result-text">Середнє значення для додатних показів температури: <span>${getAveragePositiveTemperatureValues(userIndications)}</span></p>
+								</div>
+							</div>
+						`);
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

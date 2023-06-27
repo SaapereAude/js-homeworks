@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 1</title>
+</head>
+
+<body>
+	<main class="page-task01">
+		<section class="page-task01__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task01.html" class="list__link">
+						<h2 class="list__title">Задача 1</h2>
+						<p>
+							Створити функцію, яка за номером місяця повертає його назву.
+						</p>
+					</a>
+					<td></td>
+				</div>
+				<script>
+					"use strict"
+					//Задача 1: Створити функцію, яка за номером місяця повертає його назву.
+					let getMonthName = monthNumber => {
+						let month
+						switch (monthNumber) {
+							case '1': month = 'Січень'
+								break;
+							case '2': month = 'Лютий'
+								break;
+							case '3': month = 'Березень'
+								break;
+							case '4': month = 'Квітень'
+								break;
+							case '5': month = 'Травень'
+								break;
+							case '6': month = 'Червень'
+								break;
+							case '7': month = 'Липень'
+								break;
+							case '8': month = 'Серпень'
+								break;
+							case '9': month = 'Вересень'
+								break;
+							case '10': month = 'Жовтень'
+								break;
+							case '11': month = 'Листопад'
+								break;
+							case '12': month = 'Грудень'
+								break;
+							default: alert('Будь ласка, введіть корректне числи від 1 до 12');
+								break;
+						}
+						return month
+					}
+					let monthNumber = prompt('Будь ласка, введіть номер місяця (від 1 до 12):', '6'); //номер місяця, який вводить користувач
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели: ${monthNumber} - це <span>${getMonthName(monthNumber)}</span></p>
+								</div>
+							</div>
+						`);
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

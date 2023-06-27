@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 3</title>
+</head>
+
+<body>
+	<main class="page-task03">
+		<section class="page-task03__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task03.html" class="list__link">
+						<h2 class="list__title">Задача 3</h2>
+						<p>
+							Створити окремі функції, які для 4 чисел знаходять:
+						</p>
+						<ul>
+							<li>суму;</li>
+							<li>добуток;</li>
+							<li>середнє арифметичне;</li>
+							<li>мінімальне значення.</li>
+						</ul>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 3: Створити окремі функції, які для 4 чисел знаходять: суму, добуток, середнє арифметичне, мінімальне значення
+					let getSum = (num1, num2, num3, num4) => { return num1 + num2 + num3 + num4 } //функція для знаходження суми
+					let getMultiplication = (num1, num2, num3, num4) => num1 * num2 * num3 * num4 //функція для знаходження добутку
+					let getArithmeticMean = (num1, num2, num3, num4) => (num1 + num2 + num3 + num4) / 4 //функція для знаходження середнього арифметичного
+					let getMinValue = (num1, num2, num3, num4) => { //функція для знаходження мінімального значення
+						let minNum = num1
+						if (num2 < minNum) minNum = num2
+						if (num3 < minNum) minNum = num3
+						if (num4 < minNum) minNum = num4
+						return minNum
+					}
+					let userNum1 = parseFloat(prompt('Будь ласка введіть перше число:'))
+					let userNum2 = parseFloat(prompt('Будь ласка введіть друге число:'))
+					let userNum3 = parseFloat(prompt('Будь ласка введіть третє число:'))
+					let userNum4 = parseFloat(prompt('Будь ласка введіть четверте число:'))
+
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ви ввели: ${userNum1}, ${userNum2}, ${userNum3}, ${userNum4}</p>
+									<p class="list__result-text">Сума: <span>${getSum(userNum1, userNum2, userNum3, userNum4)}</span></p>
+									<p class="list__result-text">Добуток: <span>${getMultiplication(userNum1, userNum2, userNum3, userNum4)}</span></p>
+									<p class="list__result-text">Середнє арифметичне: <span>${getArithmeticMean(userNum1, userNum2, userNum3, userNum4)}</span></p>
+									<p class="list__result-text">Мінімальне значення: <span>${getMinValue(userNum1, userNum2, userNum3, userNum4)}</span></p>
+								</div>
+							</div>
+						`);
+
+				</script>
+			</div>
+		</section>
+	</main>
+
+</body>
+
+</html>

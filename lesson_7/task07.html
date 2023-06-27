@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 7</title>
+</head>
+
+<body>
+	<main class="page-task7">
+		<section class="page-task7__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task07.html" class="list__link">
+						<h2 class="list__title">Задача 7</h2>
+						<p>
+							Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень
+							передаються у функцію)
+						</p>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 7: Створити функцію, яка випадковим чином виводить на екран одне із 4 зображень (шляхи до зображень передаються у функцію)
+
+					let showRandomImage = randNumber => {
+						// генеруємо випадкове число від 1 до 4, це число буде іменем зображення:
+						const minValue = 1
+						const maxValue = 4
+						randNumber = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+						
+						// формуємо шлях до файлу зображення: випадкове число вставляємо перед розширенням файлу при введенні src:
+						const imagePath = `<img src="img/${randNumber}.png" alt="Image" style="width: 100px">`
+
+						// резльтат роботи функції - це шлях до файлу зображення:
+						return imagePath
+					}
+					// Виводимо результат 
+					document.write(showRandomImage())
+					
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>
