@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Task 5</title>
+</head>
+
+<body>
+	<main class="page-task5">
+		<section class="page-task5__section solution">
+			<div class="solution__container">
+				<div class="task-list__list list ">
+					<a target="_blank" href="task05.html" class="list__link">
+						<h2 class="list__title">Задача 5</h2>
+						<p>
+							Дано послідовність оцінок учня. Підрахувати кількість:
+						</p>
+						<ul>
+							<li>двійок</li>
+							<li>кількість хороших оцінок (добре, відмінно);</li>
+							<li>кількість оцінок, які нижче середнього.</li>
+						</ul>
+					</a>
+				</div>
+				<script>
+					"use strict"
+					//Задача 5: Дано послідовність оцінок учня. Підрахувати кількість: двійок, кількість хороших оцінок (добре, відмінно); кількість оцінок, які нижче середнього.
+					// 1−3 бали — початковий рівень
+					// 4−6 балів — середній рівень
+					// 7−9 балів — достатній рівень
+					// 10−12 балів — високий рівень
+
+					const quantityOfGrades = parseInt(prompt('Будь ласка введіть кількість оцінок:')) // кількість оцінок
+					let studentsGrades = getGrades(quantityOfGrades) //Отримуємо масив у змінну
+
+					let badGrades = getBadGrades(studentsGrades)
+					let goodGrades = getGoodGrades(studentsGrades)
+					let gradesBelowAverage = getGradesBelowAverage(studentsGrades)
+
+					//Функція для введення елементів масиву
+					function getGrades(quantityOfGrades) {
+						let grades = []
+						for (let i = 0; i < quantityOfGrades; i++) {
+							let userGrades = parseInt(prompt(`Будь ласка введіть оцінку: ${i + 1}`))
+							grades.push(userGrades)
+						}
+						return grades
+					}
+
+					function getBadGrades(studentsGrades) {
+						let badGrades = 0
+						for (let i = 0; i < studentsGrades.length; i++) {
+							if (studentsGrades[i] === 2) badGrades++
+						}
+						return badGrades
+					}
+
+					function getGoodGrades(studentsGrades) {
+						let goodGrades = 0
+						for (let i = 0; i < studentsGrades.length; i++) {
+							if (studentsGrades[i] >= 7 && studentsGrades[i] <= 12) goodGrades++
+						}
+						return goodGrades
+					}
+
+					function getGradesBelowAverage(studentsGrades) {
+						let gradesBelowAverage = 0
+						for (let i = 0; i < studentsGrades.length; i++) {
+							if (studentsGrades[i] < 4) gradesBelowAverage++
+						}
+						return gradesBelowAverage
+					}
+
+					document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Оцінки які ви ввели: <span>${studentsGrades}</span> </p>
+									<p class="list__result-text">Кількість двійок: <span>${badGrades}</span></p>
+									<p class="list__result-text">Кількість хороших оцінок (добре, відмінно): <span>${goodGrades}</span></p>
+									<p class="list__result-text">Кількість оцінок, які нижче середнього: <span>${gradesBelowAverage}</span></p>
+								</div>
+							</div>
+						`);
+
+				</script>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>
