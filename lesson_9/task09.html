@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 9</title>
+	</head>
+
+	<body>
+		<main class="page-task9">
+			<section class="page-task9__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task09.html" class="list__link">
+							<h2 class="list__title">Задача 9</h2>
+							<p>Дано масив імен. Сформувати масив з перших літер цих імен.</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Задача 9: Дано масив імен. Сформувати масив з перших літер цих імен.
+						let arrWithNames = ["John", "Bob", "Helen", "Liam", "Alice"]
+						function getArrWithFirstLetters(arrWithNames) {
+							let arrWithFirstLetters = []
+							for (const element of arrWithNames) {
+								arrWithFirstLetters.push(element[0])
+							}
+							return arrWithFirstLetters
+						}
+						let arrWithFirstLetters = getArrWithFirstLetters(arrWithNames)
+
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Імена: <span>${arrWithNames}</span> </p>
+									<p class="list__result-text">Масив з першими літерами імен: <span>${arrWithFirstLetters}</span></p>
+								</div>
+							</div>
+						`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

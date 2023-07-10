@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 6</title>
+	</head>
+
+	<body>
+		<main class="page-task6">
+			<section class="page-task6__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task06.html" class="list__link">
+							<h2 class="list__title">Задача 6</h2>
+							<p>Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Задача 6: Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+						let array = [100, -50, 0, 502, 312, 1312, 2, 22222, -545, 1]
+						document.write(`Початковий масив: ${array} <br>`)
+						array.forEach((element, i, array) => {
+							if (element > array[0]) array[i] *= 2
+						})	
+						document.write(`Кінцевий масив ${array}`)
+
+						// Тут я зробив за допомогою for of вивід нового масиву лише зі значеннями, які були помножені на 2
+						// function getNumGraterThanFirstEl(array) {
+						// 	let resultArr = []
+						// 	for (const el of array) {
+						// 		if (el > array[0]) resultArr.push(el * 2)
+						// 	}
+						// 	return resultArr
+						// }
+						// let numGraterThanFirstEl = getNumGraterThanFirstEl(array)
+
+						// document.write(`
+						// 	<div class="solution__list list ">
+						// 		<div class="list__item">
+						// 			<h2 class="list__title">Результати:</h2>
+						// 			<p class="list__result-text">Почтаковий масив: <span>${array}</span></p>
+						// 			<p class="list__result-text">Масив з елементами, які більші за перший елемент і помножені на 2: <span>${numGraterThanFirstEl}</span> </p>
+						// 		</div>
+						// 	</div>
+						// `)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

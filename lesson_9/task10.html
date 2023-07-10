@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 10</title>
+	</head>
+
+	<body>
+		<main class="page-task10">
+			<section class="page-task10__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task10.html" class="list__link">
+							<h2 class="list__title">Задача 10</h2>
+							<p>
+								Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину
+								сплаченого податку у грн.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Задача 9: Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
+						let array = [100, 50, 500, 30, 1325, 545, 1500]
+
+						function getTax(array) {
+							let valueOfTaxArray = []
+							for (const element of array) {
+								valueOfTaxArray.push(element * 0.2)
+							}
+							return valueOfTaxArray
+						}
+						let valueOfTax = getTax(array)
+
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Ціни: <span>${array}</span> </p>
+									<p class="list__result-text">Масив з величинами сплаченого податку: <span>${valueOfTax}</span></p>
+								</div>
+							</div>
+						`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

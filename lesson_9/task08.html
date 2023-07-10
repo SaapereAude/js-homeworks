@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 8</title>
+	</head>
+
+	<body>
+		<main class="page-task8">
+			<section class="page-task8__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task08.html" class="list__link">
+							<h2 class="list__title">Задача 8</h2>
+							<p>Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Задача 8: Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»
+						let carNumbersArray = ["AA2323VC", "FF4534AA", "YY5345KK", "AA5454RR", "AG2423HH", "AE23423TT"]
+						function searchLetter(carNumbersArray) {
+							let arrWithFoundLetter = []
+							for (const element of carNumbersArray) {
+								if (element[0] === "A") {
+									arrWithFoundLetter.push(element)
+								}
+							}
+							return arrWithFoundLetter
+						}
+						let searchedCarNumbers = searchLetter(carNumbersArray, )
+
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Номери авто: <span>${carNumbersArray}</span> </p>
+									<p class="list__result-text">Масив з номерами що починаються на А: <span>${searchedCarNumbers}</span></p>
+								</div>
+							</div>
+						`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

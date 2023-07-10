@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 5</title>
+	</head>
+
+	<body>
+		<main class="page-task5">
+			<section class="page-task5__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task05.html" class="list__link">
+							<h2 class="list__title">Задача 5</h2>
+							<p>Дано масив елементів. Знайти добуток додатних елементів</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Задача 5: Дано масив елементів. Знайти добуток додатних елементів
+						///// ----------   Тут використати цикл for..of  -----------
+						let userArray = [100, -50, 0, -502, -312, -1312, 2, 2, -545, 1]
+						function getProductOfPositiveNumbers(userArray) {
+							let multiplication = 1
+							for (const element of userArray) {
+								if (element > 0) {
+									multiplication *= element
+								}
+							}
+							return multiplication
+						}
+						let productOfPositiveNumbers = getProductOfPositiveNumbers(userArray)
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Масив: <span>${userArray} </span></p>
+									<p class="list__result-text">Добуток додатних елементів: <span>${productOfPositiveNumbers}</span> </p>
+								</div>
+							</div>
+						`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

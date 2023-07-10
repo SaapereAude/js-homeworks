@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>
+								Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості
+								елементів заповнених нулями.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Задача 1: Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+
+						const quantityOfElements = parseInt(prompt("Будь ласка введіть кількість елементів:")) // кількість елементів
+
+						let array = new Array(quantityOfElements).fill(0)
+
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+									<p class="list__result-text">Кількість елементів: <span>${quantityOfElements}</span> </p>
+									<p class="list__result-text">Масив: <span>${array}</span></p>
+								</div>
+							</div>
+						`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

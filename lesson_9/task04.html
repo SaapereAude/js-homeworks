@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+	</head>
+
+	<body>
+		<main class="page-task4">
+			<section class="page-task10__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>Дано масив елементів. Вивести на екран елементи, що більші за 100</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Задача 4: Дано масив елементів. Вивести на екран елементи, що більші за 100 
+						///// ----------   Тут використати цикл for..of  -----------
+
+						let array = [100, 50, 250, 502, 234, 312, 1312, 12, 2432, 545, 12]
+						document.write(`
+							<div class="solution__list list ">
+								<div class="list__item">
+									<h2 class="list__title">Результати:</h2>
+						`)
+						for (const element of array) {
+							if (element > 100) {
+								document.write(`
+									<p class="list__result-text"><span>${element}</span></p>
+								`)
+							}
+						}
+						document.write(`
+								</div>
+							</div>
+						`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
