@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</p>
+							<ol>
+								<li>загальний прибуток кожного масиву за тиждень;</li>
+								<li>
+									загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок,
+									за вівторок, і т.д.);
+								</li>
+								<li>загальний прибуток за робочі дні</li>
+								<li>загальний прибуток за вихідні дні</li>
+								<li>максимальний прибуток за середу</li>
+								<li>сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200</li>
+								<li>відсортувати кожен тиждень за зростанням</li>
+								<li>
+									відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто
+									при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+								</li>
+								<li>
+									упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох
+									рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде
+									зрозуміло, який з елементів повинен іти раніше).
+								</li>
+							</ol>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+						// Генеруємо масив: рядки - магазини, стовпці - дні тижня
+						// Функція генерування випадкового числа:
+						function getRandomNumber(minValue, maxValue) {
+							return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+						}
+
+						// Функція генерування одного рядка
+						function generateRandomArray(arrayLength, minValue, maxValue) {
+							const array = []
+							for (let i = 0; i < arrayLength; i++) {
+								const randomNumber = getRandomNumber(minValue, maxValue)
+								array.push(randomNumber)
+							}
+							return array
+						}
+
+						function getRandomTable(rowsNumber, columnsNumber, minValue, maxValue) {
+							const table = []
+							for (let i = 0; i < rowsNumber; i++) {
+								const randomRow = generateRandomArray(columnsNumber, minValue, maxValue)
+								table.push(randomRow)
+							}
+							return table
+						}
+
+						let profitTable = getRandomTable(5, 7, 0, 1000)
+						for (let i = 0; i < profitTable.length; i++) {
+							document.write(`${profitTable[i].join(", ")} <br>`)
+						}
+						document.write(`<br>`)
+
+						// Завдання 1: Знайти загальний прибуток кожного магазину за тиждень:
+						let profitPerWeek = []
+						for (let shopIndex = 0; shopIndex < profitTable.length; shopIndex++) {
+							//цикл, який пушить до масиву загальну суму прибутку кожного магазину за тиждень
+							let profit = 0 //сума за тиждень
+							for (let dayIndex = 0; dayIndex < profitTable[shopIndex].length; dayIndex++) {
+								//цикл кожну ітерацію додає прибуток за кожний день до загальної суми за тиждень
+								profit += profitTable[shopIndex][dayIndex]
+							}
+							profitPerWeek.push(profit)
+						}
+						document.write(`Загальний прибуток кожного магазину за тиждень: ${profitPerWeek} <br>`)
+
+						// Завдання 2: Знайти загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.):
+						let profitPerDay = []
+						for (let dayIndex = 0; dayIndex < profitTable[0].length; dayIndex++) {
+							let profit = 0
+							for (let shopIndex = 0; shopIndex < profitTable.length; shopIndex++) {
+								profit += profitTable[shopIndex][dayIndex]
+							}
+							profitPerDay.push(profit)
+						}
+						document.write(`Загальний прибуток усіх магазинів за кожний день : ${profitPerDay} <br>`)
+
+						// Завдання 3: загальний прибуток за робочі дні:
+						let profitPerWorkDays = 0
+						for (let weekIndex = 0; weekIndex < profitTable.length; weekIndex++) {
+							for (let dayIndex = 0; dayIndex < 5; dayIndex++) {
+								profitPerWorkDays += profitTable[weekIndex][dayIndex]
+							}
+						}
+						document.write(`Загальний прибуток за робочі дні: ${profitPerWorkDays} <br>`)
+
+						// Завдання 4: загальний прибуток за вихідні дні:
+						let profitPerWeekends = 0
+						for (let weekIndex = 0; weekIndex < profitTable.length; weekIndex++) {
+							for (let dayIndex = 5; dayIndex < 7; dayIndex++) {
+								profitPerWeekends += profitTable[weekIndex][dayIndex]
+							}
+						}
+						document.write(`Загальний прибуток за вихідні дні: ${profitPerWeekends} <br>`)
+
+						// Завдання 5: максимальний прибуток за середу
+						let maxProfitPerWednesday= -Infinity
+						for (let shopIndex = 0; shopIndex < profitTable.length; shopIndex++) {
+							if (maxProfitPerWednesday < profitTable[shopIndex][2]) {
+								maxProfitPerWednesday = profitTable[shopIndex][2]
+							}
+						}
+						document.write(`Максимальний прибуток за середу: ${maxProfitPerWednesday} <br>`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

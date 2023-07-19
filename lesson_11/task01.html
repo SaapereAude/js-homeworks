@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>
+								Знайти суми елементів у вказаній області (масиви розділені на 4 рівні частини - не звертаємо
+								увагу на криві малюнки )
+							</p>
+							<ol>
+								<li>
+									<img src="img/task01-1.jpg" alt="Task00" />
+								</li>
+								<li>
+									<img src="img/task01-2.jpg" alt="Task00" />
+								</li>
+								<li>
+									<img src="img/task01-3.jpg" alt="Task00" />
+								</li>
+								<li>
+									<img src="img/task01-4.jpg" alt="Task00" />
+								</li>
+								<li>Суму парних рядків</li>
+								<li>Суму непарних стовпців</li>
+								<li>У парних рядках – непарні стовпці, у непарних – парні.</li>
+							</ol>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Знайти суми елементів у вказаній області (масиви розділені на 4 рівні частини -  не звертаємо увагу на криві малюнкиi )
+						//======================================================================================================================================================
+						// Генеруємо масив:
+						// Функція генерування випадкового числа:
+						function getRandomNumber(minValue, maxValue) {
+							return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+						}
+
+						// Функція генерування одного рядка
+						function generateRandomArray(arrayLength, minValue, maxValue) {
+							const array = []
+							for (let i = 0; i < arrayLength; i++) {
+								const randomNumber = getRandomNumber(minValue, maxValue)
+								array.push(randomNumber)
+							}
+							return array
+						}
+
+						function getRandomTable(rowsNumber, columnsNumber, minValue, maxValue) {
+							const table = []
+							for (let i = 0; i < rowsNumber; i++) {
+								const randomRow = generateRandomArray(columnsNumber, minValue, maxValue)
+								table.push(randomRow)
+							}
+							return table
+						}
+
+						let randomTable = getRandomTable(4, 8, 0, 9)
+						for (let i = 0; i < randomTable.length; i++) {
+							document.write(`${randomTable[i].join(", ")} <br>`)
+						}
+						document.write(`<br>`)
+						//========================================================================================================================================================
+
+						function getSum(array, startRowIndex, endRowIndex, startColumnIndex, endColumnIndex) {
+							let sum = 0
+							for (let rowIndex = startRowIndex; rowIndex < endRowIndex; rowIndex++) {
+								for (let columnIndex = startColumnIndex; columnIndex < endColumnIndex; columnIndex++) {
+									sum += array[rowIndex][columnIndex]
+								}
+							}
+							return sum
+						}
+						// Завдання 1
+						let firstSumFunc = getSum(randomTable, 0, 2, 0, 4)
+						document.write(`1) Лівий верхній (функція): ${firstSumFunc} <br>`)
+
+						// Завдання 2
+						let secondSumFunc = getSum(randomTable, 0, 2, 4, 8)
+						document.write(`2) Правий верхній (функція): ${secondSumFunc} <br>`)
+
+						// Завдання 3
+						let thirdSumFunc = getSum(randomTable, 2, 4, 0, 4)
+						document.write(`3) Лівий нижній (функція): ${thirdSumFunc} <br>`)
+
+						// Завдання 4
+						let fourthSumFunc = getSum(randomTable, 2, 4, 4, 8)
+						document.write(`4) Правий нижній (функція): ${fourthSumFunc} <br>`)
+
+						// Завдання 1
+						let firstSum = 0
+						for (let rowIndex = 0; rowIndex < 2; rowIndex++) {
+							for (let columnIndex = 0; columnIndex < 4; columnIndex++) {
+								firstSum += randomTable[rowIndex][columnIndex]
+							}
+						}
+						document.write(`1) Лівий верхній: ${firstSum} <br>`)
+
+						// Завдання 2
+						let secondSum = 0
+						for (let rowIndex = 0; rowIndex < 2; rowIndex++) {
+							for (let columnIndex = 4; columnIndex <= 7; columnIndex++) {
+								secondSum += randomTable[rowIndex][columnIndex]
+							}
+						}
+						document.write(`2) Правий верхній: ${secondSum} <br>`)
+
+						// Завдання 3
+						let thirdSum = 0
+						for (let rowIndex = 2; rowIndex <= 3; rowIndex++) {
+							for (let columnIndex = 0; columnIndex < 4; columnIndex++) {
+								thirdSum += randomTable[rowIndex][columnIndex]
+							}
+						}
+						document.write(`3) Лівий нижній: ${thirdSum} <br>`)
+
+						// Завдання 4
+						let fourthSum = 0
+						for (let rowIndex = 2; rowIndex <= 3; rowIndex++) {
+							for (let columnIndex = 4; columnIndex <= 7; columnIndex++) {
+								fourthSum += randomTable[rowIndex][columnIndex]
+							}
+						}
+						document.write(`4) Правий нижній: ${fourthSum} <br>`)
+
+						// 0 - парне число, відлік у масивах починається від 0, тому перший(у нашій інтерпретації простих смертних) рядок/стовбчик має індекс 0 у масиві, від нього і рахуємо
+						// Завдання 5: Суму парних рядків
+						let evenRowSum = 0
+						for (let rowIndex = 0; rowIndex < randomTable.length; rowIndex += 2) {
+							for (let columnIndex = 0; columnIndex < randomTable[rowIndex].length; columnIndex++) {
+								evenRowSum += randomTable[rowIndex][columnIndex]
+							}
+						}
+						document.write(`5) Сума парних рядків: ${evenRowSum} <br>`)
+
+						// Завдання 6: Суму непарних стовпців
+						let oddColumnSum = 0
+						for (let rowIndex = 0; rowIndex < randomTable.length; rowIndex++) {
+							for (let columnIndex = 1; columnIndex < randomTable[rowIndex].length; columnIndex += 2) {
+								oddColumnSum += randomTable[rowIndex][columnIndex]
+							}
+						}
+						document.write(`6) Сума непарних стовпців: ${oddColumnSum} <br>`)
+
+						// Завдання 7: Суму елементів: у парних рядках – непарні стовпці, у непарних рядках – парні стовпці.
+						let sumEvenRowsWithOddColumns = 0
+						let sumOddRowsWithEvenColumns = 0
+						for (let rowIndex = 0; rowIndex < randomTable.length; rowIndex++) {
+							if (rowIndex % 2 === 0) {
+								for (let columnIndex = 1; columnIndex < randomTable[rowIndex].length; columnIndex += 2) {
+									sumEvenRowsWithOddColumns += randomTable[rowIndex][columnIndex]
+								}
+							} else {
+								for (let columnIndex = 0; columnIndex < randomTable[rowIndex].length; columnIndex += 2) {
+									sumOddRowsWithEvenColumns += randomTable[rowIndex][columnIndex]
+								}
+							}
+						}
+						document.write(
+							`7.1) Сума елементів: у парних рядках – непарні стовпці: ${sumEvenRowsWithOddColumns} <br>`
+						)
+						document.write(
+							`7.2) Сума елементів: у непарних рядках – парні стовпці: ${sumOddRowsWithEvenColumns} <br>`
+						)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
