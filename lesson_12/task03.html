@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>
+								Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування
+								включеннями.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
+						function getRandomNumber(minValue, maxValue) {
+							return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+						}
+						// Функція генерування одного рядка
+						function generateRandomArray(arrayLength, minValue, maxValue) {
+							const array = []
+							for (let i = 0; i < arrayLength; i++) {
+								const randomNumber = getRandomNumber(minValue, maxValue)
+								array.push(randomNumber)
+							}
+							return array
+						}
+						let randomArray = generateRandomArray(30, 1, 30)
+						document.write(`Масив до сортування: ${randomArray.join(", ")} <br>`)
+						//========================================================================================================================================================
+						let counter = 0
+						for (let j = 1; j < randomArray.length; j++) {
+							const currentElement = randomArray[j]
+							let i = j - 1
+							while (i >= 0 && randomArray[i] > currentElement) {
+								randomArray[i + 1] = randomArray[i]
+								i = i - 1
+								counter++
+							}
+							randomArray[i + 1] = currentElement
+						}
+						document.write(`Масив після сортування: ${randomArray.join(", ")} <br>`)
+						document.write(`Кількість обмінів під час сортування : ${counter}<br>`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

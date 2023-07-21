@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення
+								відповідних таблиць за зразком. Тобто кожного разу після обміну елементів вивести поточний
+								стан масиву на екран.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком. Тобто кожного разу після обміну елементів вивести поточний стан масиву на екран.
+
+						//========================================================================================================================================================
+						// Для цього завдання я взяв масиви з прикладу у ДЗ, щоб у всіх методах сортування були однакові масиви і було наглядніше видно чим вони відрізняються
+
+						// Сортування бульбашкою
+						document.write(`<h2 class="sort sort_title">Сортування бульбашкою:</h2>`)
+
+						let arrayForBubbleSort = [3, 5, 1, 4, 2]
+						document.write(`<p class="sort sort_start">${arrayForBubbleSort.join(", ")}</p>`)
+
+						let bubleSort = showBubbleSortSteps(arrayForBubbleSort)
+						function showBubbleSortSteps(array) {
+							let changed
+							do {
+								changed = false
+								for (let i = 1; i < array.length; i++) {
+									if (array[i - 1] > array[i]) {
+										let tmp = array[i - 1]
+										array[i - 1] = array[i]
+										array[i] = tmp
+										changed = true
+										document.write(`<p class="sort sort_results">${array.join(", ")} </p>`)
+									}
+								}
+							} while (changed)
+						}
+
+						//========================================================================================================================================================
+						// Сортування змішуванням
+						document.write(`<h2 class="sort sort_title">Сортування змішуванням:</h2>`)
+
+						let arrayForCocktailSort = [3, 5, 1, 4, 2]
+						document.write(`<p class="sort sort_start">${arrayForCocktailSort.join(", ")}</p>`)
+
+						function swap(A, i, j) {
+							//функція для обміну місцями елементів
+							let temp = A[i]
+							A[i] = A[j]
+							A[j] = temp
+						}
+						function showCocktailSortSteps(array) {
+							let leftIndex = 0
+							let rightIndex = array.length - 1
+
+							while (leftIndex < rightIndex) {
+								for (let i = leftIndex; i < rightIndex; i++) {
+									if (array[i] > array[i + 1]) {
+										swap(array, i, i + 1)
+										document.write(`<p class="sort sort_results">${array.join(", ")} </p>`)
+									}
+								}
+								rightIndex--
+
+								for (let i = rightIndex; i > leftIndex; i--) {
+									if (array[i] < array[i - 1]) {
+										swap(array, i, i - 1)
+										document.write(`<p class="sort sort_results">${array.join(", ")} </p>`)
+									}
+								}
+								leftIndex++
+							}
+						}
+						showCocktailSortSteps(arrayForCocktailSort)
+
+						//========================================================================================================================================================
+						// Сортування включенням
+						document.write(`<h2 class="sort sort_title">Сортування включенням:</h2>`)
+
+						let arrayForInsertionSort = [3, 5, 1, 4, 2]
+						document.write(`<p class="sort sort_start">${arrayForInsertionSort.join(", ")}</p>`)
+
+						function showInsertionSortSteps(array) {
+							for (let j = 1; j < array.length; j++) {
+								const currentElement = array[j]
+								let i = j - 1
+								while (i >= 0 && array[i] > currentElement) {
+									array[i + 1] = array[i]
+									i = i - 1
+								}
+								array[i + 1] = currentElement
+								document.write(`<p class="sort sort_results">${array.join(", ")} </p>`)
+							}
+						}
+						showInsertionSortSteps(arrayForInsertionSort)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

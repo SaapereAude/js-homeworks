@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 5</title>
+	</head>
+
+	<body>
+		<main class="page-task05">
+			<section class="page-task05__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task05.html" class="list__link">
+							<h2 class="list__title">Задача 5</h2>
+							<p>
+								Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві
+								ім’я «Olga» і під яким індексом.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+						let arrayWithNames = [
+							"John",
+							"Paul",
+							"Andrew",
+							"Abrams",
+							"Abba",
+							"Peter",
+							"Tina",
+							"Olga",
+							"Jack",
+							"Peter",
+						]
+						document.write(`<p class="sort sort_start">${arrayWithNames.join(", ")}</p>`)
+
+						arrayWithNames.sort() //сортуємо масив за зростанням методом швидкого сортування
+						document.write(`${arrayWithNames.join(", ")}`)
+
+						// функція бінарного пошуку індексу імені
+						function findIndexBinarySearch(array, name) {
+							let start = 0
+							let end = array.length - 1
+							while (start <= end) {
+								const middle = Math.floor((start + end) / 2)
+								if (array[middle] === name) return middle
+								if (array[middle] < name) start = middle + 1
+								if (array[middle] > name) end = middle - 1
+							}
+							return - 1
+						}
+						const searchNameIndex = findIndexBinarySearch(arrayWithNames, 'Olga')
+						if (searchNameIndex !== -1){
+							document.write(`<p class="sort">Ім'я Olga є у масиві та знаходиться під номером: ${searchNameIndex+1} (або має індекс ${searchNameIndex})</p>`)
+						} else {
+							document.write(`<p class="sort">Імені Olga немає у масиві</p>`)
+						}
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
