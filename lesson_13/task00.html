@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 0</title>
+	</head>
+
+	<body>
+		<main class="page-task00">
+			<section class="page-task00__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task00.html" class="list__link">
+							<h2 class="list__title">Задача 0</h2>
+							<p>Реалізувати рекурсивну функцію знаходження степеня числа а</p>
+							<img src="img/task00.png" alt="task" />
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Реалізувати рекурсивну функцію знаходження степеня числа а
+						function getExponentiate(a, n) {
+							if (n === 1) {
+								return a
+							} else if (n > 1) {
+								return getExponentiate(a, n - 1) * a
+							}
+						}
+						let exp = getExponentiate(5, 2)
+						document.write(`Число 5 у 2й степені дорівнює ${exp}`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

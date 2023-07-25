@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>
+								Нехай <img src="img/task011.png" alt="" />, де i=1,2,...... Визначити
+								<img src="img/task012.png" alt="" /> . Розв’язати з використанням рекурсивних і нерекурсивних
+								алгоритмів
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+						function getXWithRecursiveMethod(i) {
+							if (i === 0) return 1
+							return getXWithRecursiveMethod(i - 1) + 2 * i
+						}
+						let xWithRecursiveMethod = getXWithRecursiveMethod(10)
+						console.log(xWithRecursiveMethod)
+
+						function getXWithoutRecursion(n) {
+							let x = 1 //значення x0
+							for (let i = 0; i <= n; i++) { //за допомогою циклу обчислюємо значеня від x0 до x10
+								x += 2 * i
+							}
+							return x
+						}
+						let xWithoutRecursion = getXWithoutRecursion(10)
+						document.write(`x10 = ${xWithoutRecursion}`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
