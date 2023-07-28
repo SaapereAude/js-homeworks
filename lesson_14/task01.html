@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>Описати масив об’єктів – сайтів розроблених компанією з такими властивостями</p>
+							<p>Властивості</p>
+							<ul>
+								<li>назва компанії на час розробки (назву періодично змінюють)</li>
+								<li>власник компанії</li>
+								<li>
+									споснсори (масив спонсорів)
+									<ul>
+										<li>прізвище спонсора</li>
+										<li>ім’я спонсора</li>
+										<li>сума вкладень спонсора</li>
+									</ul>
+								</li>
+								<li>рік випуску</li>
+								<li>вартість сайту</li>
+							</ul>
+							<p>Знайти:</p>
+							<ol>
+								<li>загальну вартість усіх сайтів</li>
+								<li>кількість сайтів, що було зроблено між 2000 та 2009 рр.</li>
+								<li>кількість сайтів, де сума спонсорських вкладень була більшою за 100000</li>
+								<li>
+									створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у
+									масив)
+								</li>
+								<li>знайти рік, коли прибуток був найбільшим</li>
+								<li>упорядкувати список за спаданням прибутку</li>
+								<li>
+									Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше
+									10000
+								</li>
+							</ol>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						let websites = [
+							{
+								companyName: "SpaceX",
+								companyOwner: "Elon Mask",
+								companySponsors: [
+									{
+										sponsorLastName: "Connor",
+										sponsorFirstName: "John",
+										sponsorInvestments: 100000,
+									},
+									{
+										sponsorLastName: "Connor",
+										sponsorFirstName: "Sara",
+										sponsorInvestments: 500,
+									},
+								],
+								websiteReleaseYear: 2001,
+								websitePrice: 10000,
+							},
+							{
+								companyName: "Macrosoft",
+								companyOwner: "Gill Bates",
+								companySponsors: [
+									{
+										sponsorLastName: "Wozniak",
+										sponsorFirstName: "Steve",
+										sponsorInvestments: 400,
+									},
+									{
+										sponsorLastName: "Allen",
+										sponsorFirstName: "Paul",
+										sponsorInvestments: 100,
+									},
+								],
+								websiteReleaseYear: 1998,
+								websitePrice: 500,
+							},
+							{
+								companyName: "Apple",
+								companyOwner: "Steve Jobs",
+								companySponsors: [
+									{
+										sponsorLastName: "Mask",
+										sponsorFirstName: "Elon",
+										sponsorInvestments: 4000,
+									},
+									{
+										sponsorLastName: "Gates",
+										sponsorFirstName: "Bill",
+										sponsorInvestments: 10000000,
+									},
+								],
+								websiteReleaseYear: 2005,
+								websitePrice: 10000,
+							},
+						]
+						//Знайти загальну вартість усіх сайтів
+						const totalWebsitesCost = websites.reduce((prevSum, website) => prevSum + website.websitePrice, 0)
+						document.write(`1) Загальна вартість усіх сайтів: ${totalWebsitesCost} <br>`)
+
+						//Знайти кількість сайтів, що було зроблено між 2000 та 2009 рр
+						const quantityOfWebsitesBetweenYears = websites.reduce((prevSum, website) => {
+							if (website.websiteReleaseYear >= 2000 && website.websiteReleaseYear <= 2009) prevSum++
+							return prevSum
+						}, 0)
+						document.write(
+							`2) Кількість сайтів, що було зроблено між 2000 та 2009 рр: ${quantityOfWebsitesBetweenYears} <br>`
+						)
+
+						//Знайти кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+						const sponsorInvestmentsGreaterThan100000 = websites.reduce((prevNumber, website) => {
+							let sponsorGraterThan100000 = website.companySponsors.reduce(
+								(prevSum, sponsor) => prevSum + sponsor.sponsorInvestments,
+								0
+							)
+							return sponsorGraterThan100000 > 100000 ? prevNumber + 1 : prevNumber
+						}, 0)
+						document.write(
+							`3) Кількість сайтів, де сума спонсорських вкладень була більшою за 100000: ${sponsorInvestmentsGreaterThan100000} <br>`
+						)
+
+						//Створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+						const sponsorList = websites.reduce((prevCompanySponsors, website) => {
+							website.companySponsors.forEach((companySponsor) =>
+								prevCompanySponsors.push({
+									nameSponsor: companySponsor.sponsorFirstName + companySponsor.sponsorLastName,
+								})
+							)
+							return prevCompanySponsors
+						}, [])
+						document.write("4) Результат у консолі <br>")
+						console.log(sponsorList)
+
+						//Знайти рік, коли прибуток був найбільшим
+						function getMaxProfitableYear(websites) {
+							let maxProfit = -Infinity
+							let maxProfitableYear
+							for (let i = 0; i < websites.length; i++) {
+								if (maxProfit < websites[i].websitePrice) {
+									maxProfit = websites[i].websitePrice
+									maxProfitableYear = websites[i].websiteReleaseYear
+								}
+							}
+							return maxProfitableYear
+						}
+						const maxProfitableYear = getMaxProfitableYear(websites)
+						document.write(`5) Рік, коли прибуток був найбільшим: ${maxProfitableYear} <br>`)
+
+						// Упорядкувати список за спаданням прибутку
+						function sortProfitDescending(websites) {
+							for (let i = 0; i < websites.length; i++) {
+								websites.sort((el1, el2) => el2.websitePrice - el1.websitePrice)
+							}
+							return websites
+						}
+						const profitDescending = sortProfitDescending(websites)
+						document.write("6) Результат у консолі <br>")
+						console.log(profitDescending)
+
+						// Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+						let pricesLessThan1000 = websites.filter((website) => website.websitePrice < 1000)
+						document.write("7) Результат у консолі <br>")
+						console.log(pricesLessThan1000)
+						let pricesGreaterThan1000 = websites.filter((website) => website.websitePrice > 1000)
+						console.log(pricesGreaterThan1000)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
