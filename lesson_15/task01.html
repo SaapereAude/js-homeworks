@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>
+								Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому
+								випадку.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+
+						class ShootingRange {
+							// Пусте ігрове поле заповнене нулями
+							constructor(fieldSize) {
+								this.field = new Array(fieldSize).fill(0)
+							}
+							// Метод заповнення ігрового поля зайцями випадковим чином
+							generateTergets(targetsNumber) {
+								let maxTargetsNumber = this.field.length
+								for (let i = 0; i < targetsNumber; ) {
+									let randomPosition = Math.floor(Math.random() * maxTargetsNumber)
+									if (this.field[randomPosition] === 0) {
+										this.field[randomPosition] = 1
+										i++
+									}
+								}
+								this.targetsNumber = targetsNumber
+								console.log(this.field)
+							}
+
+							// Метод пострілу
+							shot(shotAmount) {
+								while (shotAmount > 0) {
+									let shot = parseInt(prompt(`Введіть координати цілі (від 0 до ${this.field.length})`))
+									shotAmount-- //з кожним пострілом кількість доступних пострілів зменшується на 1
+									// Виводимо кількість пострілів і кількість цілей, що залишилось
+									this.showStatistics(shot, shotAmount)
+									// Коли не залишилось цілей, то виводимо ігрове поле з розташованними цілями
+									if (this.targetsNumber === 0) {
+										return document.write(
+											`Ви знищили всі цілі! Ігрове поле: ${this.field
+												.map((position) => (position === 1 ? "З" : "-"))
+												.join(" ")}`
+										)
+									} else if (shotAmount === 0) {
+										// Коли не залишилось пострілів, то виводимо ігрове поле з розташованними цілями
+										return document.write(
+											`У вас не залишилось пострілів! Ігрове поле: ${this.field
+												.map((position) => (position === 1 ? "З" : "-"))
+												.join(" ")}`
+										)
+									}
+								}
+							}
+							showStatistics(shot, shotAmount) {
+								if (this.field[shot - 1] === 1) {
+									this.targetsNumber--
+									alert(
+										`Ви влучили! Кількість пострілів залишилось: ${shotAmount}. Кількість цілей залишилось: ${this.targetsNumber}`
+									)
+								} else {
+									alert(
+										`Ви промахнуися! Кількість пострілів залишилось: ${shotAmount}. Кількість цілей залишилось: ${this.targetsNumber}`
+									)
+								}
+							}
+						}
+						let fieldSize = parseInt(prompt("Будь ласка введіть кількість клітинок"))
+						let targetsNumber = parseInt(prompt("Введіть кількість зайців"))
+						let shot = parseInt(prompt("Введіть кількість пострілв"))
+						let shootingRange = new ShootingRange(fieldSize)
+						shootingRange.generateTergets(targetsNumber)
+						shootingRange.shot(shot)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

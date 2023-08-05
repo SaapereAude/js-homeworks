@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 5</title>
+	</head>
+
+	<body>
+		<main class="page-task05">
+			<section class="page-task05__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task05.html" class="list__link">
+							<h2 class="list__title">Задача 5</h2>
+							<p>Розробити клас «Керівник танців»</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Розробити клас «Керівник танців»
+						class DanceCoach {
+							constructor(boysNames, girlsNames) {
+								this.boysNames = boysNames
+								this.girlsNames = girlsNames
+							}
+							// метод випадкового вибору імені хлопця
+							generateRandomBoysName() {
+								return this.boysNames[Math.floor(Math.random() * this.boysNames.length)]
+							}
+							// метод випадкового вибору імені дівчини
+							generateRandomGirlsName() {
+								return this.girlsNames[Math.floor(Math.random() * this.girlsNames.length)]
+							}
+							// метод виведення пари для танців
+							displayDanceCouple() {
+								let boy = this.generateRandomBoysName()
+								let girl = this.generateRandomGirlsName()
+								return `${boy} and ${girl} <br>`
+							}
+							run() {
+								setInterval(() => document.write(`${this.displayDanceCouple()}`), 5000)
+							}
+						}
+
+						let boysNamesArray = ["John", "Paul", "Andrew"]
+						let girlsNamesArray = ["Tina", "Olga", "Abba"]
+
+						let danceCouple = new DanceCoach(boysNamesArray, girlsNamesArray)
+						danceCouple.run()
+
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

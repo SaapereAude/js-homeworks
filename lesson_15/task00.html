@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 0</title>
+	</head>
+
+	<body>
+		<main class="page-task00">
+			<section class="page-task00__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task00.html" class="list__link">
+							<h2 class="list__title">Задача 0</h2>
+							<p>
+								Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція
+								знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між
+								заданими мінімальним і максимальних значенням. Використати обидва методи стосовно обидвох
+								об’єктів (використати call, apply)
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням. Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+
+						let object1 = {
+							numArray: [2, 3, 5, 6, 10, 50],
+							getSum: function () {
+								return this.numArray.reduce((sum, number) => sum + number, 0)
+							},
+						}
+
+						// let object2 = {
+						// 	numArray: [22, 23, 53, 77, 10, 50],
+						// 	getProduct: function (minNumber, maxNumber) {
+						// 		let numbers = this.numArray.filter((number) => number > minNumber && number < maxNumber) //тут ми шукаємо числа, які задовільняють нашій умовіЮ тобто числа між заданним минінімальни числом і максимальним (не включаючи їх)
+						// 		return numbers.reduce((product, num) => product * num, 1)
+						// 	},
+						// }
+
+						let object2 = {
+							numArray: [22, 23, 53, 77, 10, 50],
+							getProduct: function (minNumber, maxNumber) {
+								return this.numArray.reduce(
+									(product, number) =>
+										number > minNumber && number < maxNumber ? product * number : product,
+									1
+								)
+							},
+						}
+						let sumOfObject1 = object1.getSum()
+						let sumOfObject2Call = object1.getSum.call(object2)
+						let sumOfObject2Apply = object1.getSum.apply(object2)
+
+						let prodOfObject2 = object2.getProduct(1, 55)
+						let prodOfObject1Call = object2.getProduct.call(object1, 1, 55)
+						let prodOfObject1Apply = object2.getProduct.apply(object1, [1, 55])
+
+						document.write(`Сума чисел з масиву першого об'єкту: ${sumOfObject1} <br>`)
+						document.write(
+							`Сума чисел з масиву другого об'єкту використовуючи call: ${sumOfObject2Call} <br>`
+						)
+						document.write(
+							`Сума чисел з масиву другого об'єкту використовуючи apply: ${sumOfObject2Apply} <br>`
+						)
+
+						document.write(`Добуток чисел з масиву другого об'єкту: ${prodOfObject2} <br>`)
+						document.write(
+							`Добуток чисел з масиву першого об'єкту використовуючи call: ${prodOfObject1Call} <br>`
+						)
+						document.write(
+							`Добуток чисел з масиву першого об'єкту використовуючи apply: ${prodOfObject1Apply} <br>`
+						)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

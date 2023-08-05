@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>зробити клас Baner</p>	
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Розробити клас Baner
+						let bannerArray = [
+							{
+								imageLink:
+									"https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+								websiteLink: "https://www.google.com/",
+							},
+							{
+								imageLink: "https://upst.fwdcdn.com/img/top-logo-ua-mod3.gif",
+								websiteLink: "https://www.ukr.net/",
+							},
+							{
+								imageLink:
+									"https://content.rozetka.com.ua/mb_logo/image_site_light_theme/original/345645615.svg",
+								websiteLink: "https://rozetka.com.ua/",
+							},
+						]
+						class Banner {
+							constructor(bannerArray) {
+								this.bannerArray = bannerArray
+							}
+							// метод випадкового вибору об'єктів
+							getRandomBanner() {
+								return this.bannerArray[Math.floor(Math.random() * this.bannerArray.length)]
+							}
+							// метод виведення випадкового баннера 
+							displayBanner() {
+								let randomBanner = this.getRandomBanner()
+								document.write(`<a href="${randomBanner.websiteLink}">
+														<img src="${randomBanner.imageLink}" alt="">
+													</a>`)
+							}
+						}
+						let banner = new Banner(bannerArray)
+						banner.displayBanner()
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

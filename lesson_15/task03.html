@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>Розробити клас MultChecker для перевірки таблиці множення</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Розробити клас MultChecker для перевірки таблиці множення
+						class MultChecker {
+							constructor(checkNumber) {
+								this.checkNumber = checkNumber
+								this.corectAnswers = 0
+								this.wrongAnswers = 0
+							}
+							// генерування випадкового числа
+							generateRandomNumber() {
+								this.randomNumber = Math.floor(Math.random() * 10) + 1
+								return this.randomNumber
+							}
+							// генерування прикладу
+							generateExpression() {
+								return this.checkNumber * this.randomNumber
+							}
+							//перевірка правильності вказаної відповіді
+							checkUserNumber() {
+								let userAnswer = parseInt(prompt(`Скільки буде ${this.checkNumber} * ${this.generateRandomNumber()}?`))
+								let correctAnswer = this.generateExpression()
+								if (userAnswer === correctAnswer) return this.corectAnswers++
+								else return this.wrongAnswers++
+							}
+						
+							render() {
+								if(this.corectAnswers === 1) document.write(`Ви відповіли правильно`)
+								else document.write(`Ви відповіли неправильно`)
+							}
+						}
+
+						let check = new MultChecker(2)
+
+						check.render(check.checkUserNumber())
+
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
