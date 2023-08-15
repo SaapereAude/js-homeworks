@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>Об’єкт “Фірма” (використати члени-класи)</p>
+							<ul>
+								<li>назва фірми;</li>
+								<li>дата заснування (рік, місяць);</li>
+								<li>послуги (назва послуги, вартість, термін виконання);</li>
+								<li>адреси філіалів (країна, місто, вулиця, номер будинку);</li>
+								<li>визначення кількості років існування фірми;</li>
+								<li>виведення всіх філіалів фірми у вказаному місті;</li>
+								<li>
+									виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін
+									часу;
+								</li>
+							</ul>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Об’єкт “Фірма” (використати члени-класи)
+						//назва фірми;
+						//дата заснування (рік, місяць);
+						//послуги (назва послуги, вартість, термін виконання);
+						//адреси філіалів (країна, місто, вулиця, номер будинку);
+						//визначення кількості років існування фірми;
+						//виведення всіх філіалів фірми у вказаному місті;
+						//виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+						class Service {
+							#cost
+							#term
+							constructor(name, cost, term) {
+								this.name = name
+								this.Cost = cost
+								this.Term = term
+							}
+							get Cost() {
+								return this.#cost
+							}
+							set Cost(value) {
+								if (value < 0) throw new Error("Помилка! Вартість послуги не може бути від'ємною")
+								this.#cost = value
+							}
+							get Term() {
+								return this.#term
+							}
+							set Term(days) {
+								if (days < 0) throw new Error("Помилка! Термін виконнання послуги не може бути від'ємним")
+								this.#term = days
+							}
+							toString() {
+								return `
+								Назва послуги: ${this.name},
+								Вартість послуги: ${this.Cost}грн,
+								Термін виконання: ${this.Term}днів,
+								<br>
+								`
+							}
+						}
+						class Address {
+							constructor(country, city, street, houseNumber) {
+								this.country = country
+								this.city = city
+								this.street = street
+								this.houseNumber = houseNumber
+							}
+							toString() {
+								return `
+								Країна: ${this.country},
+								Місто: ${this.city},
+								Вулиця: ${this.street},
+								Номер будинку: ${this.houseNumber} <br>
+								`
+							}
+						}
+						class Company {
+							#monthOfFoundation
+							constructor(name, yearOfFoundation, monthOfFoundation) {
+								this.name = name
+								this.yearOfFoundation = yearOfFoundation
+								this.MonthOfFoundation = monthOfFoundation
+								this.services = []
+								this.branches = []
+							}
+							get MonthOfFoundation() {
+								return this.#monthOfFoundation
+							}
+							set MonthOfFoundation(month) {
+								if (month < 1 || month > 12)
+									throw new Error("Помилка! Номер місяця повинен бути більше за 0 та мне більше 12")
+								this.#monthOfFoundation = month
+							}
+
+							//додавання нових послуг
+							addServices(name, cost, term) {
+								const service = new Service(name, cost, term)
+								this.services.push(service)
+							}
+							// додавання філіалів
+							addBranches(country, city, street, houseNumber) {
+								const branch = new Address(country, city, street, houseNumber)
+								this.branches.push(branch)
+							}
+
+							//визначення кількості років існування фірми
+							getCompanyAge() {
+								const currentYear = 2023
+								let companyAge
+								if (currentYear > this.yearOfFoundation) {
+									companyAge = currentYear - this.yearOfFoundation
+								}
+								return companyAge
+							}
+
+							//виведення всіх філіалів фірми у вказаному місті;
+							getBranchesCityList(city) {
+								return this.branches.filter((branch) => branch.city === city)
+							}
+							//виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;
+							getServicesPerTimeAndPrice(price, term) {
+								return this.services.filter((service) => service.Cost <= price && service.Term <= term)
+							}
+
+							toString() {
+								return `Назва фірми: ${this.name}<br>
+								Дата заснування фірми: ${this.MonthOfFoundation}.${this.yearOfFoundation}<br>
+								Послуги:<br> ${this.services}
+								Філіали фірми: ${this.branches}<br><br>
+								Кількість років існування фірми: ${this.getCompanyAge()} <br><br>
+								Філіали, відфільтровані по вказаному місту: ${this.getBranchesCityList("Тернопіль")}<br><br>
+								Послуги, що можуть бути виконані за вказзану суму грошей та вказаний термін часу: ${this.getServicesPerTimeAndPrice(
+									1500,
+									100
+								)}<br><br><hr>
+								`
+							}
+						}
+
+						const webTech = new Company("WebTech", 2011, 2)
+						webTech.addServices("Розробка веб-додатків", 2500, 50)
+						webTech.addServices("Розробка веб-сайтів", 1500, 30)
+						webTech.addBranches("Україна", "Київ", "Тараса Шевченка", "15")
+						webTech.addBranches("Україна", "Тернопіль", "Івана Франка", "25")
+						webTech.addBranches("Україна", "Тернопіль", "Лесі Українки", "5")
+						document.write(`${webTech}`)
+
+						const softCode = new Company("Soft Code", 2015, 7)
+						softCode.addServices("Розробка інтернет-магазину", 2500, 50)
+						softCode.addServices("Розробка лендінгу", 1500, 30)
+						softCode.addBranches("Україна", "Київ", "Тараса ШевченкаІвана Франка", "15")
+						softCode.addBranches("Україна", "Київ", "Тараса Шевченка", "25")
+						softCode.addBranches("Україна", "Тернопіль", "Лесі Українки", "5")
+						document.write(`${softCode}`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

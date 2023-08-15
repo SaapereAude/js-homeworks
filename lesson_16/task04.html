@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для
+								зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи
+								знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої
+								суми.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які може видати банкомат, та метод зняття деякої суми.
+						class TBanknote {
+							constructor(nominal, quantity) {
+								this.nominal = nominal
+								this.quantity = quantity
+							}
+						}
+						let banknots = [
+							new TBanknote(5, 500),
+							new TBanknote(10, 450),
+							new TBanknote(20, 400),
+							new TBanknote(50, 350),
+							new TBanknote(100, 300),
+							new TBanknote(200, 250),
+						]
+						class TBankomat {
+							constructor(banknots) {
+								this.banknots = banknots
+							}
+
+							// метод знаходження мінімальної суми
+							getMinSum() {
+								let minSum = this.banknots.reduce(
+									(sum, banknote) => (sum > banknote.nominal ? (sum = banknote.nominal) : sum),
+									Infinity
+								)
+								return minSum
+							}
+
+							// метод знаходження максимальної суми
+							getMaxSum() {
+								let maxSum = this.banknots.reduce(
+									(sum, banknote) => sum + banknote.nominal * banknote.quantity,
+									0
+								)
+								return maxSum
+							}
+							// метод зняття деякої суми
+							withdrawAnySum(value) {
+								let atmMinAmountOfMoney = this.getMinSum()
+								let atmAmountOfMoney = this.getMaxSum()
+								if (atmAmountOfMoney < value) throw new Error("Помилка! У банкоматі недостатньо коштів")
+								if (value % atmMinAmountOfMoney !== 0)
+									throw new Error("Помилка! У банкоматі немає таких банкнот")
+								else return atmAmountOfMoney - value
+							}
+
+							toString() {
+								return `
+									Мінімальна сума: ${this.getMinSum()} <br>
+									Максимальна сума: ${this.getMaxSum()} <br>
+									Ви зняли ${userMoney}грн, у банкоматі залишилось ${this.withdrawAnySum(userMoney)}грн
+								`
+							}
+						}
+
+						
+						let bankomat = new TBankomat(banknots)
+						let userMoney = parseInt(prompt("Скільки грошей ви хотіли б зняти?"))
+						document.write(`${bankomat}`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
