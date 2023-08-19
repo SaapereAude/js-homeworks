@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори (піб, рік народження,
+								короткий опис), назва книги, жанр, видавництво (назва, реєстраційний номер, рік засування)).
+								Реалізувати розділи бібліотеки організувати додавання/вилучення книг та вибір книг за назвою,
+								за ПІБ автора, за видавництвом.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Особиста бібліотека. Картотека домашньої бібліотеки:
+						// Дані книги:
+						// 				назва книги,
+						// 				жанр,
+						// 				автори:
+						// 							піб,
+						// 							рік народження,
+						// 						   короткий опис
+						// 				видавництво:
+						// 							назва,
+						// 							реєстраційний номер,
+						// 							рік заснування.
+						// Бібліотека:
+						// 				додавання книг
+						// 				вилучення книг
+						// 			 	вибір книг за назвою,
+						// 				вибір книг за ПІБ автора
+						// 				вибір книг за видавництвом.
+						//
+						class Library {
+							constructor(section, bookList) {
+								this.section = section
+								this.bookList = bookList
+							}
+							// додавання книг
+							addBook(book) {
+								this.bookList.push(book)
+							}
+							// вилучення книг
+							deleteBook(title) {
+								this.bookList = this.bookList.filter((book) => book.title !== title)
+							}
+							// вибір книг за назвою
+							filterByTitle(title) {
+								return this.bookList.filter((book) => book.title === title)
+							}
+							// вибір книг за ПІБ автора
+							filterByFullName(fullName) {
+								return this.bookList.filter((book) => book.author.fullName === fullName)
+							}
+
+							// вибір книг за видавництвом
+							filterByPublisher(name) {
+								return this.bookList.filter((book) => book.publisher.publisherName === name)
+							}
+						}
+						class Book {
+							constructor(initData) {
+								this.author = new Author(initData)
+								this.publisher = new Publisher(initData)
+								this.title = initData.title
+								this.genre = initData.genre
+							}
+							toString() {
+								return `Назва книги: ${this.title}<br>
+								Жанр: ${this.genre}<br> 
+								Автори: ${this.author}<br>
+								Видавництво: ${this.publisher}<br>`
+							}
+						}
+						class Author {
+							constructor({ fullName, yearOfBirth, description }) {
+								this.fullName = fullName
+								this.yearOfBirth = yearOfBirth
+								this.description = description
+							}
+							toString() {
+								return `${this.fullName}<br>
+								Дата народження: ${this.yearOfBirth}<br>
+								Короткий опис: ${this.description}`
+							}
+						}
+						class Publisher {
+							constructor({ publisherName, regNumber, publisherYear }) {
+								this.publisherName = publisherName
+								this.regNumber = regNumber
+								this.publisherYear = publisherYear
+							}
+							toString() {
+								return `${this.publisherName}<br> 
+								Реєстраційний номер: ${this.regNumber}<br>
+								Рік заснування: ${this.publisherYear}<br>`
+							}
+						}
+
+						// let book = new Book({
+						// 	fullName: "Тарас Шевченко",
+						// 	yearOfBirth: 1814,
+						// 	description:
+						// 		"Тарас Шевченко - безумовно найвидатніша особистість в історії української культури. Поет народився 9 березня 1814 року в селі Моринці Київської губернії в сім'ї кріпака. Діди і прадіди Тараса були козаками і брали активну участь у визвольних війнах. Особливий вплив на майбутнього автора «Кобзаря» справив дід Іван. Свого часу він брав участь у Коліївщині і розповів онукові багато подробиць про це повстання.",
+						// 	title: "Кобзар",
+						// 	genre: "Поетичні твори",
+						// 	puplisherName: "Піраміда",
+						// 	regNumber: "РН00",
+						// 	publisherYear: 1995,
+						// })
+
+						// console.log(book)
+
+						let bookList = [
+							new Book({
+								fullName: "Тарас Шевченко",
+								yearOfBirth: 1814,
+								description:
+									"Тарас Шевченко - безумовно найвидатніша особистість в історії української культури. Поет народився 9 березня 1814 року в селі Моринці Київської губернії в сім'ї кріпака. Діди і прадіди Тараса були козаками і брали активну участь у визвольних війнах. Особливий вплив на майбутнього автора «Кобзаря» справив дід Іван. Свого часу він брав участь у Коліївщині і розповів онукові багато подробиць про це повстання.",
+								title: "Щоденник",
+								genre: "Автобіографія",
+								publisherName: "Піраміда",
+								regNumber: "РН00",
+								publisherYear: 1995,
+							}),
+							new Book({
+								fullName: "Леся Українка",
+								yearOfBirth: 1871,
+								description:
+									"Леся Українка - відома українська поетеса, драматург і культурний діяч. Справжнє ім'я письменниці - Лариса Петрівна Косач-Квітка. Вона народилася 25 лютого 1871 року в Новоград-Волинську в родині відомих культурних діячів. Мати Лесі - відома письменниця, що писала під псевдонімом Олена Пчілка, активна учасниця жіночого руху. У сім'ї дуже часто збиралися різні українські культурні діячі, серед яких не в останню чергу дядько письменниці, Михайло Драгоманов. Він вплинув на Українку, опікав племінницю і допомагав їй. Ще в дитинстві дівчинка вивчила ряд іноземних мов, що дозволяло їй читати класичні та сучасні твори, а також займатися перекладами.",
+								title: "Вибране",
+								genre: "Поетичні твори",
+								publisherName: "Фоліо",
+								regNumber: "РН01",
+								publisherYear: 1990,
+							}),
+							new Book({
+								fullName: "Григорій Сковорода",
+								yearOfBirth: 1722,
+								description:
+									"Григорій Савич Сковорода (1722-1794) - видатний український філософ-містик, богослов, поет, поліглот, педагог, вніс значний вклад в східнослов'янську культуру. Автор байок, пісень, ряду філософських творів, серед яких «Сад божественних пісень», «Байки харківські», «Убогий жайворонок».",
+								title: "Літературні твори",
+								genre: "Художні твори",
+								publisherName: "Апріорі",
+								regNumber: "РН02",
+								publisherYear: 2002,
+							}),
+						]
+
+						let lib = new Library("Українська література", bookList)
+						console.log("Бібліотека:")
+						console.log(lib)
+
+						// Вивід на екран списку книжок і їх повна інформація
+						document.write(`Список книжок:<br><br> ${bookList} <hr><hr><br> Фільтри:<br><br> `)
+
+						// Додавання книги
+						lib.addBook(
+							new Book({
+								fullName: "Тарас Шевченко",
+								yearOfBirth: 1814,
+								description:
+									"Тарас Шевченко - безумовно найвидатніша особистість в історії української культури. Поет народився 9 березня 1814 року в селі Моринці Київської губернії в сім'ї кріпака. Діди і прадіди Тараса були козаками і брали активну участь у визвольних війнах. Особливий вплив на майбутнього автора «Кобзаря» справив дід Іван. Свого часу він брав участь у Коліївщині і розповів онукові багато подробиць про це повстання.",
+								title: "Кобзар",
+								genre: "Поетичні твори",
+								publisherName: "Піраміда",
+								regNumber: "РН00",
+								publisherYear: 1995,
+							})
+						)
+
+						console.log("Бібліотека після додавання книги:")
+						console.log(lib)
+
+						// Вилучення книги
+						lib.deleteBook("Літературні твори")
+						console.log("Бібліотека після вилучення книги:")
+						console.log(lib)
+
+						// Вибір книг за назвою
+						console.log("Вибір книг за назвою:")
+						console.log(lib.filterByTitle("Щоденник"))
+						document.write(`Вибір книг за назвою:<br> ${lib.filterByTitle("Щоденник")}`)
+
+						// Вибір книг за ПІБ автора
+						console.log("Вибір книг за ПІБ автора:")
+						console.log(lib.filterByFullName("Тарас Шевченко"))
+						document.write(`Вибір книг за ПІБ автора:<br> ${lib.filterByFullName("Тарас Шевченко")}`)
+
+						// Вибір книг за видавництвом
+						console.log("Вибір книг за видавництвом:")
+						console.log(lib.filterByPublisher("Фоліо"))
+						document.write(`Вибір книг за видавництвом:<br> ${lib.filterByPublisher("Фоліо")}`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

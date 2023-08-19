@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>
+								Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма
+								нагадує про якусь подію (це просто текст) і також виводиться порядковий номер скільки раз вже
+								нагадування було. Зробити так, щоб неможна було зробити одночасно декілька
+								об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення без зупинки таймера.
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Створити клас Нагадувач.
+						//  Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було.
+						// Зробити так, щоб неможна було зробити одночасно декілька об’єктів-нагадувачів.
+						// Метод зупинки таймера
+						// метод зміни повідомлення без зупинки таймера
+						class Reminder {
+							static reminderExample
+							constructor(message, interval) {
+								if (Reminder.reminderExample) return Reminder.reminderExample
+								this.message = message
+								this.interval = interval
+								this.counter = 0
+								Reminder.reminderExample = this
+							}
+							run() {
+								this.intervalId = setInterval(() => {
+									this.counter++
+									document.write(`${this.counter})${this.message}<br>`)
+								}, this.interval)
+							}
+							stop() {
+								clearInterval(this.intervalId)
+							}
+							change(message) {
+								this.message = message
+							}
+						}
+						let r1 = new Reminder("Перше повідомлення", 1000)
+						r1.run()
+
+						setTimeout(() => {
+							r1.change("Друге повідомлення")
+						}, 5000)
+
+						setTimeout(() => {
+							r1.stop()
+						}, 10000)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

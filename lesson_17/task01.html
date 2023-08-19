@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>
+								Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості
+								додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)
+							</p>
+						</a>
+					</div>
+					<script>
+						"use strict"
+						//Умова задачі: Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних, кількості від’ємних, кількість входжень деякого числа (статичні методи)
+						class Counter {
+							// знаходження кількості додатних чисел
+							static getPositiveNumQuantity(array) {
+								let positiveNums = array.reduce((sum, el) => (el > 0 ? sum + 1 : sum), 0)
+								return positiveNums
+							}
+							// знаходження кількості від’ємних чисел
+							static getNegativeNumQuantity(array) {
+								let negativeNums = array.reduce((sum, el) => (el <= 0 ? sum + 1 : sum), 0)
+								return negativeNums
+							}
+							// знаходження кількості входжень деякого числа
+							static getNumOccurencesQuantity(array, number) {
+								let numOccurences = array.reduce((sum, el) => (el === number ? sum + 1 : sum), 0)
+								return numOccurences
+							}
+						}
+						let array = [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10]
+						let num = 5
+						document.write(`Масив: ${array} <br>`)
+						document.write(`Число: ${num} <br>`)
+						document.write(`Кількість додатних чисел: ${Counter.getPositiveNumQuantity(array)} <br>`)
+						document.write(`Кількість від’ємних чисел: ${Counter.getNegativeNumQuantity(array)} <br>`)
+						document.write(`Кількість входжень деякого числа: ${Counter.getNumOccurencesQuantity(array, num)}`)
+					</script>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
