@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+		<script>
+			"use strict"
+			//Умова задачі: Розробити калькулятор
+			// function getSum() {
+			// 	const firstNum = parseFloat(document.getElementById("first").value)
+			// 	const secondNum = parseFloat(document.getElementById("second").value)
+			// 	const sum = firstNum + secondNum
+			// 	document.getElementById("result").value = sum
+			// 	document.getElementById("resText").innerText = `${firstNum}+${secondNum} = ${sum}`
+			// }
+			// function getSubstraction() {
+			// 	const firstNum = parseFloat(document.getElementById("first").value)
+			// 	const secondNum = parseFloat(document.getElementById("second").value)
+			// 	const substraction = firstNum - secondNum
+			// 	document.getElementById("result").value = substraction
+			// 	document.getElementById("resText").innerText = `${firstNum}-${secondNum} = ${substraction}`
+			// }
+			// function getMultiplication() {
+			// 	const firstNum = parseFloat(document.getElementById("first").value)
+			// 	const secondNum = parseFloat(document.getElementById("second").value)
+			// 	const multiplication = firstNum * secondNum
+			// 	document.getElementById("result").value = multiplication
+			// 	document.getElementById("resText").innerText = `${firstNum}*${secondNum} = ${multiplication}`
+			// }
+			// function getDivision() {
+			// 	const firstNum = parseFloat(document.getElementById("first").value)
+			// 	const secondNum = parseFloat(document.getElementById("second").value)
+			// 	const division = firstNum / secondNum
+			// 	document.getElementById("result").value = division
+			// 	document.getElementById("resText").innerText = `${firstNum}/${secondNum} = ${division}`
+			// }
+			// window.onload = function () {
+			// 	document.getElementById("sum").onclick = getSum
+			// 	document.getElementById("subtraction").onclick = getSubstraction
+			// 	document.getElementById("multiplication").onclick = getMultiplication
+			// 	document.getElementById("division").onclick = getDivision
+			// }
+
+			function getResult(operator) {
+				const firstNum = parseFloat(document.getElementById("first").value)
+				const secondNum = parseFloat(document.getElementById("second").value)
+				let result
+				switch (operator) {
+					case "sum":
+						result = firstNum + secondNum
+						document.getElementById("resText").innerText = `${firstNum}+${secondNum} = ${result}`
+						break
+					case "subtraction":
+						result = firstNum - secondNum
+						document.getElementById("resText").innerText = `${firstNum}-${secondNum} = ${result}`
+						break
+					case "multiplication":
+						result = firstNum * secondNum
+						document.getElementById("resText").innerText = `${firstNum}*${secondNum} = ${result}`
+						break
+					case "division":
+						result = firstNum / secondNum
+						document.getElementById("resText").innerText = `${firstNum}/${secondNum} = ${result}`
+						break
+				}
+				document.getElementById("result").value = result
+			}
+			window.onload = function () {
+				document.getElementById("sum").onclick = () => getResult("sum")
+				document.getElementById("subtraction").onclick = () => getResult("subtraction")
+				document.getElementById("multiplication").onclick = () => getResult("multiplication")
+				document.getElementById("division").onclick = () => getResult("division")
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>Розробити калькулятор</p>
+						</a>
+					</div>
+					<label for="first">
+						First number
+						<input id="first" type="number" placeholder="Type first number here" class="input" value="0" />
+					</label>
+					<label for="second">
+						Second number
+						<input id="second" type="number" placeholder="Type second number here" class="input" value="0" />
+					</label>
+					<div class="operations">
+						<button id="sum">Додати</button>
+						<button id="subtraction">Відняти</button>
+						<button id="multiplication">Помножити</button>
+						<button id="division">Поділити</button>
+					</div>
+					<label for="result">
+						Результат:
+						<input id="result" type="number" placeholder="Результат" class="input" value="0" />
+					</label>
+					<div id="resText"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

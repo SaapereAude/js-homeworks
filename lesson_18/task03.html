@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+		<script>
+			"use strict"
+			//Умова задачі: Користувач задає рік народження. Визначити кількість років користувача.
+			function getUserAge() {
+				const userYearOfBirth = parseInt(document.getElementById("year_of_birth").value)
+				const currentYear = 2023
+				const userAge = currentYear - userYearOfBirth
+				document.getElementById("age").innerHTML = userAge
+			}
+			window.onload = function () {
+				document.getElementById("year_of_birth").oninput = getUserAge
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>Користувач задає рік народження. Визначити кількість років користувача.</p>
+						</a>
+					</div>
+					<label>
+						Рік народження:
+						<input type="number" id="year_of_birth" />
+					</label>
+					<div>
+						<span>Вік користувача:</span>
+						<span id="age"></span>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

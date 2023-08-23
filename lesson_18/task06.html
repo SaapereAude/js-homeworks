@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 6</title>
+		<script>
+			"use strict"
+			//Умова задачі: Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+			function getTable() {
+				const userGrades = parseInt(document.getElementById("grades").value)
+				const createTable = document.createElement("table")
+				const resultBlock = document.querySelector(".result")
+				document.querySelector(".result").append(createTable)
+				for (let row = 0; row < userGrades; row++) {
+					const createRow = document.createElement("tr")
+					const createInput = document.createElement("input")
+					createInput.className = "result__grade"
+					createRow.append(createInput)
+					createTable.append(createRow)
+				}
+				const createButton = document.createElement("button")
+				createButton.setAttribute("id", "get_sum")
+				createButton.innerText = "Get sum"
+				resultBlock.append(createButton)
+				document.getElementById("get_sum").onclick = getSum
+			}
+			function getSum() {
+				const userNums = document.querySelectorAll(".result__grade")
+				let sumGrades = 0
+				for (const userNum of userNums) {
+					sumGrades += parseInt(userNum.value)
+				}
+				let averageBlock = document.createElement("div")
+				document.querySelector(".result").append(averageBlock)
+				let averageGrade = sumGrades / userNums.length
+				averageBlock.innerText = `Середній бал: ${averageGrade.toFixed(0)}`
+			}
+			window.onload = function () {
+				document.getElementById("get_table").onclick = getTable
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task06">
+			<section class="page-task06__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task06.html" class="list__link">
+							<h2 class="list__title">Задача 6</h2>
+							<p>
+								Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується
+								таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і
+								знаходить середнє значення.
+							</p>
+						</a>
+					</div>
+					<div class="inputs">
+						<label>
+							Кількість оцінок
+							<input type="number" id="grades" />
+						</label>
+						<button id="get_table">get table</button>
+					</div>
+					<div class="result"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

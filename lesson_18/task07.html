@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 7</title>
+		<script>
+			"use strict"
+			//Умова задачі: Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати  - radio buttons). Ціни визначте самі. Підрахувати загальну вартість.
+			function getCost() {
+				const transportPrices = document.querySelectorAll(".form__transport_select")
+				// const mealsPrices = document.querySelectorAll(".form__meals")
+				// const guidePrices = document.querySelectorAll(".form__guide")
+				const mealsAndGuidesPrices = document.querySelectorAll(".checkradio")
+				const totalCost = document.getElementById("results")
+
+				let totalSum = 0
+				for (const transportPrice of transportPrices) {
+					totalSum += parseFloat(transportPrice.value)
+				}
+				// for (const mealsPrice of mealsPrices) {
+				// 	if (mealsPrice.checked) totalSum += parseFloat(mealsPrice.value)
+				// }
+				// for (const guidePrice of guidePrices) {
+				// 	if (guidePrice.checked) totalSum += parseFloat(guidePrice.value)
+				// }
+				for (const mealsAndGuidesPrice of mealsAndGuidesPrices) {
+					if (mealsAndGuidesPrice.checked) totalSum += parseFloat(mealsAndGuidesPrice.value)
+				}
+				totalCost.innerText = `Загальна вартість: ${totalSum}`
+			}
+
+			window.onload = function () {
+				document.querySelector("button").onclick = getCost
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task07">
+			<section class="page-task07__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task07.html" class="list__link">
+							<h2 class="list__title">Задача 7</h2>
+							<p>
+								Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів
+								транспорту (авто, автобус, літак - випадаючий список), харчування (сніданок, обід, вечеря –
+								checkbоx) та одного з 3-х гідів(використати - radio buttons). Ціни визначте самі. Підрахувати
+								загальну вартість.
+							</p>
+						</a>
+					</div>
+
+					<form action="#" class="form" id="form1">
+						<h2 class="form__title">Етап 1</h2>
+						<label for="form__transport">
+							Види транспорту:
+							<select name="transport" id="form__transport1" class="form__transport_select">
+								<option value="200">Авто</option>
+								<option value="100">Автобус</option>
+								<option value="500">Літак</option>
+							</select>
+						</label>
+						<h3 class="form__title">Харчування:</h3>
+						<label for="form__meals1" class="form__label">
+							<input type="checkbox" id="form__meals1" value="500" class="form__meals checkradio" />
+							Сніданок
+						</label>
+						<label for="form__meals2" class="form__label">
+							<input type="checkbox" id="form__meals2" value="400" class="form__meals checkradio" />
+							Обід
+						</label>
+						<label for="form__meals3" class="form__label">
+							<input type="checkbox" id="form__meals3" value="300" class="form__meals checkradio" />
+							Вечеря
+						</label>
+						<h3 class="form__title">Гід:</h3>
+						<label for="form__guide1" class="form__label">
+							<input
+								type="radio"
+								name="guide1"
+								id="form__guide1"
+								value="500"
+								class="form__guide checkradio" />
+							Гід 1
+						</label>
+						<label for="form__guide2" class="form__label">
+							<input
+								type="radio"
+								name="guide1"
+								id="form__guide2"
+								value="400"
+								class="form__guide checkradio" />
+							Гід 2
+						</label>
+						<label for="form__guide3" class="form__label">
+							<input
+								type="radio"
+								name="guide1"
+								id="form__guide3"
+								value="300"
+								class="form__guide checkradio" />
+							Гід 3
+						</label>
+					</form>
+					<hr />
+					<form action="#" class="form" id="form2">
+						<h2 class="form__title">Етап 2</h2>
+						<label for="form__transport">
+							Види транспорту:
+							<select name="transport" id="form__transport2" class="form__transport_select">
+								<option value="200">Авто</option>
+								<option value="100">Автобус</option>
+								<option value="500">Літак</option>
+							</select>
+						</label>
+						<h3 class="form__title">Харчування:</h3>
+						<label for="form__meals4" class="form__label">
+							<input type="checkbox" id="form__meals4" value="500" class="form__meals checkradio" />
+							Сніданок
+						</label>
+						<label for="form__meals5" class="form__label">
+							<input type="checkbox" id="form__meals5" value="400" class="form__meals checkradio" />
+							Обід
+						</label>
+						<label for="form__meals6" class="form__label">
+							<input type="checkbox" id="form__meals6" value="300" class="form__meals checkradio" />
+							Вечеря
+						</label>
+						<h3 class="form__title">Гід:</h3>
+						<label for="form__guide4" class="form__label">
+							<input
+								type="radio"
+								name="guide2"
+								id="form__guide4"
+								value="500"
+								class="form__guide checkradio" />
+							Гід 1
+						</label>
+						<label for="form__guide5" class="form__label">
+							<input
+								type="radio"
+								name="guide2"
+								id="form__guide5"
+								value="400"
+								class="form__guide checkradio" />
+							Гід 2
+						</label>
+						<label for="form__guide6" class="form__label">
+							<input
+								type="radio"
+								name="guide2"
+								id="form__guide6"
+								value="300"
+								class="form__guide checkradio" />
+							Гід 3
+						</label>
+					</form>
+					<hr />
+					<form action="#" class="form" id="form3">
+						<h2 class="form__title">Етап 3</h2>
+						<label for="form__transport">
+							Види транспорту:
+							<select name="transport" id="form__transport3" class="form__transport_select">
+								<option value="200">Авто</option>
+								<option value="100">Автобус</option>
+								<option value="500">Літак</option>
+							</select>
+						</label>
+						<h3 class="form__title">Харчування:</h3>
+						<label for="form__meals7" class="form__label">
+							<input type="checkbox" id="form__meals7" value="500" class="form__meals checkradio" />
+							Сніданок
+						</label>
+						<label for="form__meals8" class="form__label">
+							<input type="checkbox" id="form__meals8" value="400" class="form__meals checkradio" />
+							Обід
+						</label>
+						<label for="form__meals9" class="form__label">
+							<input type="checkbox" id="form__meals9" value="300" class="form__meals checkradio" />
+							Вечеря
+						</label>
+						<h3 class="form__title">Гід:</h3>
+						<label for="form__guide7" class="form__label">
+							<input
+								type="radio"
+								name="guide3"
+								id="form__guide7"
+								value="500"
+								class="form__guide checkradio" />
+							Гід 1
+						</label>
+						<label for="form__guide8" class="form__label">
+							<input
+								type="radio"
+								name="guide3"
+								id="form__guide8"
+								value="400"
+								class="form__guide checkradio" />
+							Гід 2
+						</label>
+						<label for="form__guide9" class="form__label">
+							<input
+								type="radio"
+								name="guide3"
+								id="form__guide9"
+								value="300"
+								class="form__guide checkradio" />
+							Гід 3
+						</label>
+					</form>
+					<button>Визначити загальну вартість</button>
+					<div id="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

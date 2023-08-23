@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+		<script>
+			"use strict"
+			//Умова задачі: Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+
+			function getThreeWishes() {
+				const wishesArray = [
+					"Бажання 1",
+					"Бажання 2",
+					"Бажання 3",
+					"Бажання 4",
+					"Бажання 5",
+					"Бажання 6",
+					"Бажання 7",
+					"Бажання 8",
+					"Бажання 9",
+					"Бажання 10",
+				]
+				for (let i = 0; i < 3; i++) {
+					const randomNum = Math.floor(Math.random() * wishesArray.length)
+					const wishBlock = document.createElement("div")
+					wishBlock.className = "wish"
+					wishBlock.innerText = wishesArray[randomNum]
+					document.querySelector(".solution__container").append(wishBlock)
+				}
+			}
+
+			window.onload = function () {
+				getThreeWishes()
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином
+								вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+							</p>
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
