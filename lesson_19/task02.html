@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 2</title>
+		<script>
+			"use strict"
+			//Умова задачі: Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+			function showInputValue() {
+				let input = this
+				let value = parseFloat(this.children[0].value)
+				while (input.nextElementSibling) {
+					input = input.nextElementSibling
+					input.children[0].value = value += 1
+				}
+				while (input.previousElementSibling) {
+					input = input.previousElementSibling
+					input.children[0].value = value -= 1
+				}
+			}
+			window.onload = function () {
+				const labels = document.querySelectorAll(".results__label")
+				for (const label of labels) {
+					label.oninput = showInputValue
+				}
+			}
+
+			// function showInputValue() {
+			// 	let input = this
+			// 	let value = parseInt(this.value)
+			// 	while (input.nextElementSibling) {
+			// 		input = input.nextElementSibling
+			// 		input.value = value += 1
+			// 	}
+
+			// 	while (input.previousElementSibling) {
+			// 		input = input.previousElementSibling
+			// 		input.value = value -= 1
+			// 	}
+			// }
+
+			// window.onload = function () {
+			// 	const labels = document.querySelectorAll(".results__input")
+			// 	for (const label of labels) {
+			// 		label.oninput = showInputValue
+			// 	}
+			// }
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task02">
+			<section class="page-task02__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task02.html" class="list__link">
+							<h2 class="list__title">Задача 2</h2>
+							<p>
+								Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично
+								заповнювати інші (усі попередні у спадному порядку(кожен попередній має значення на 1 менше за
+								наступний), усі наступні на 1 більше (кожен наступне на 1 більше за попереднього)
+							</p>
+						</a>
+					</div>
+					<div class="results">
+						<label class="results__label">
+							<input type="number" class="results__input" />
+						</label>
+						<label class="results__label">
+							<input type="number" class="results__input" />
+						</label>
+						<label class="results__label">
+							<input type="number" class="results__input" />
+						</label>
+						<label class="results__label">
+							<input type="number" class="results__input" />
+						</label>
+						<label class="results__label">
+							<input type="number" class="results__input" />
+						</label>
+						<!-- <input type="number" class="results__input" />
+						<input type="number" class="results__input" />
+						<input type="number" class="results__input" />
+						<input type="number" class="results__input" />
+						<input type="number" class="results__input" /> -->
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

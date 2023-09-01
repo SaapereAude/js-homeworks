@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+		<script>
+			"use strict"
+			//Умова задачі: Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у червоний.
+			class List {
+				constructor(listQuantity) {
+					this.listQuantity = listQuantity
+				}
+				getRandomNumber(minValue, maxValue) {
+					return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+				}
+				changeColor() {
+					const lists = document.querySelectorAll("ol")
+					for (const list of lists) {
+						if (list.children.length % 2 === 0) list.style.backgroundColor = "green"
+						else list.style.backgroundColor = "red"
+					}
+				}
+				render(parrentClassName, listClassName) {
+					for (let list = 0; list < this.listQuantity; list++) {
+						let randomNumber = this.getRandomNumber(1, 10)
+						let olList = document.createElement("ol")
+						olList.className = listClassName
+						for (let li = 0; li < randomNumber; li++) {
+							let liItem = document.createElement("li")
+							liItem.innerText = `${this.getRandomNumber(1, 100)}`
+							olList.append(liItem)
+						}
+						if (parrentClassName) document.querySelector(parrentClassName).append(olList)
+					}
+					
+					this.btn = document.createElement("button")
+					this.btn.innerText = "Зафарбувати списки"
+					this.btn.onclick = this.changeColor.bind(this)
+					document.querySelector(parrentClassName).after(this.btn)
+				}
+			}
+			window.onload = function () {
+				let list = new List(5)
+				list.render(".results3", "ordered-list")
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>
+								Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість
+								елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні
+								на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у
+								червоний.
+							</p>
+						</a>
+					</div>
+					<div class="results3">
+
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

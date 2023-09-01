@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 5</title>
+		<script>
+			"use strict"
+			//Умова задачі: Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного елемента)
+			class Card {
+				constructor(initData){
+					Object.assign(this, initData)
+				}
+				render(className){
+					const cardBox = document.createElement("a")
+					cardBox.setAttribute("href", "#")
+					cardBox.className = "card"
+					cardBox.onclick = this.onFocus
+
+					const cardStatus = document.createElement("span")
+					cardStatus.className = "card__status"
+					cardStatus.innerText = this.status.text
+					cardStatus.classList.add(`${this.status.colorModifier}`)
+					cardBox.append(cardStatus)
+
+					const imageWrapper = document.createElement("div")
+					imageWrapper.className = "card__image"
+					cardBox.append(imageWrapper)
+
+					const image = document.createElement("img")
+					image.setAttribute("src", `${this.image.src}`)
+					image.setAttribute("alt", `${this.image.alt}`)
+					imageWrapper.append(image)
+
+					const cardTitle = document.createElement("h2")
+					cardTitle.className = "card__title"
+					cardTitle.innerText = this.title
+					cardBox.append(cardTitle)
+
+					const cardPrice = document.createElement("div")
+					cardPrice.className = "card__price"
+					cardPrice.innerText = this.price + "₴"
+					cardBox.append(cardPrice)
+					if (className) document.querySelector(className).append(cardBox)
+				}
+				onFocus(){
+					let item = this
+					item.classList.toggle("card_green")
+				}
+			}
+			let cards = [
+				{
+					status: {
+						text: "акція",
+						colorModifier: "card__status_red",
+					},
+					image: {
+						src: "img/1.jpg",
+						alt: "image",
+					},
+					title: "Ноутбук Acer Aspire 7",
+					price: "30999"
+				},
+				{
+					status: {
+						text: "топ продаж",
+						colorModifier: "card__status_orange",
+					},
+					image: {
+						src: "img/2.jpg",
+						alt: "image",
+					},
+					title: "Ноутбук Asus Vivobook 15",
+					price: "17499"
+				},
+				{
+					status: {
+						text: "топ продаж",
+						colorModifier: "card__status_orange",
+					},
+					image: {
+						src: "img/3.jpg",
+						alt: "image",
+					},
+					title: "Ноутбук Apple MacBook Air",
+					price: "39999"
+				},
+				{
+					status: {
+						text: "топ продаж",
+						colorModifier: "card__status_orange",
+					},
+					image: {
+						src: "img/4.jpg",
+						alt: "image",
+					},
+					title: "Ноутбук HP Pavilion 15",
+					price: "23999"
+				},
+			]
+			window.onload = function(){
+				for (const card of cards) {
+					new Card(card).render(".results5")
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task05">
+			<section class="page-task05__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task05.html" class="list__link">
+							<h2 class="list__title">Задача 5</h2>
+							<p>
+								Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити toogle з класом вибраного елемента)
+							</p>
+							<!-- <a href="#" class="card">
+								<span class="card__status"></span>
+								<div class="card__image">
+									<img src="#" alt="">
+								</div>
+								<h2 class="card__title"></h2>
+								<div class="card__price"></div>
+							</a> -->
+						</a>
+					</div>
+					<div class="results5"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

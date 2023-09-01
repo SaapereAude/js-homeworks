@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+		<script>
+			"use strict"
+			//Умова задачі: Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля назви таблиці з використанням відповідно доданого для цього атрибута).
+			// Не зрозумів як зробити лічльник кліків по таблиці, хоча пробував декілька варіантів з додаванням аттрибутів (щоб при кліку навішувався аттибут і рахунок кліків вівся у його значенні і потім передавався у розмітку через innerText), але це не працювало(
+			class Tables {
+				constructor(rows = 3, columns = 3) {
+					this.rows = rows
+					this.columns = columns
+				}
+				getRandomNumber(minValue, maxValue) {
+					return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+				}
+				render(parrentClassName) {
+					const createTable = document.createElement("table")
+					createTable.className = "results__table"
+					document.querySelector(".results").append(createTable)
+					for (let row = 0; row < this.rows; row++) {
+						const createRow = document.createElement("tr")
+						for (let column = 0; column < this.columns; column++) {
+							let tableContent = this.getRandomNumber(1, 100)
+							const createColumn = document.createElement("td")
+							createColumn.innerText = tableContent
+							createRow.append(createColumn)
+						}
+						createTable.append(createRow)
+					}
+				}
+				build3Tables() {
+					for (let table = 0; table < 3; table++) {
+						new Tables(3, 3).render(".results")
+					}
+				}
+			}
+			window.onload = function () {
+				const tables = new Tables().build3Tables()
+				const tablesList = document.querySelectorAll(".results__table")
+				for (const table of tablesList) {
+					table.onclick = function () {
+						table.closest(".results__table").classList.toggle("results__table_red")
+					}
+				}
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із
+								клітинок, то до відповідної таблиці додається червона рамка (спробуйте додати можливість
+								відображення кількості кліків біля назви таблиці з використанням відповідно доданого для цього
+								атрибута).
+							</p>
+							<table class="result-table">
+								<tr>
+									<td>td</td>
+									<td>td</td>
+									<td>td</td>
+								</tr>
+								<tr>
+									<td>td</td>
+									<td>td</td>
+									<td>td</td>
+								</tr>
+								<tr>
+									<td>td</td>
+									<td>td</td>
+									<td>td</td>
+								</tr>
+							</table>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
