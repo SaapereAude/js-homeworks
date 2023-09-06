@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+		<script>
+			"use strict"
+			//Умова задачі: На сторінці міститься певна кількість кнопок і інпутів. Підраховувати загальну кількість кліків окремо на кнопках і окремо на інпутах.
+			window.onload = function () {
+				const inputs = document.querySelector(".results__input-counter")
+				const btn = document.querySelector(".results__btn-counter")
+				let inputClickCounter = 0
+				let btnClickCounter = 0
+				window.captureEvents(Event.CLICK)
+				window.onclick = (e) => {
+					if (e.target.closest(".results__input")) inputClickCounter += 1
+					if (e.target.closest(".results__btn")) btnClickCounter += 1
+					inputs.innerText = `Натискань на інпути: ${inputClickCounter}`
+					btn.innerText = `Натискань на кнопки: ${btnClickCounter}`
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								На сторінці міститься певна кількість кнопок і інпутів. Підраховувати загальну кількість
+								кліків окремо на кнопках і окремо на інпутах.
+							</p>
+						</a>
+					</div>
+					<div class="results">
+						<form action="#" class="results__form">
+							<input type="text" value="Я інпут" class="results__input" />
+							<input type="text" value="Зріст" class="results__input" />
+							<input type="text" value="Вага" class="results__input" />
+							<input type="text" value="Заробітна плата" class="results__input" />
+							<input type="text" value="Стаж" class="results__input" />
+							<input type="text" value="Номер відділу" class="results__input" />
+							<input type="text" value="Порядковий номер" class="results__input" />
+							<button type="button" class="results__btn">Я кнопка</button>
+							<button type="button" class="results__btn">Я кнопка</button>
+							<button type="button" class="results__btn">Я кнопка</button>
+						</form>
+						<div class="results__input-counter"></div>
+						<div class="results__btn-counter"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

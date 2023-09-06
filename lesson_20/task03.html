@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+		<script>
+			"use strict"
+			//Умова задачі: На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий номер). Додати подію обробки події click на форму і якщо клік на внутрішньому input, то автоматично замінювати значення його на 0. Використати делегування
+			window.onload = function(){
+				document.addEventListener('click', changeInputValue)
+				function changeInputValue(e) {
+					const targetElement = e.target
+					if (targetElement.closest('.results__input')) {
+						targetElement.value = 0
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p> На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий номер). Додати подію обробки події click на форму і якщо клік на внутрішньому input, то автоматично замінювати значення його на 0. Використати делегування</p>
+						</a>
+					</div>
+					<div class="results">
+						<form action="#" class="results__form">
+							<input type="text" value="Вік" class="results__input">
+							<input type="text" value="Зріст" class="results__input">
+							<input type="text" value="Вага" class="results__input">
+							<input type="text" value="Заробітна плата" class="results__input">
+							<input type="text" value="Стаж" class="results__input">
+							<input type="text" value="Номер відділу" class="results__input">
+							<input type="text" value="Порядковий номер" class="results__input">
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
