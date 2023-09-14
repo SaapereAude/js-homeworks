@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+		<script>
+			"use strict"
+			//Умова задачі: Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.
+			class IsNotNumberError extends Error {
+				constructor() {
+					super()
+					this.message = "Було введене не число. Будь ласка введіть число"
+					this.name = "Not a number"
+				}
+			}
+			class IsNotHolidays extends Error {
+				constructor() {
+					super()
+					this.message = "В цей місяць канікули"
+					this.name = "Holidays"
+				}
+			}
+			class IsScoreError extends Error {
+				constructor() {
+					super()
+					this.message = "Будь ласка введіть число від 1 до 100"
+					this.name = "Score error"
+				}
+			}
+			class Validator {
+				constructor() {
+					this.formResult = null
+				}
+				validateDate() {
+					const month = document.getElementById("i1")
+					const score = document.getElementById("i2")
+					const userMonth = parseInt(month.value)
+					const userScore = parseInt(score.value)
+					try {
+						if (isNaN(userMonth) || isNaN(userScore)) throw new IsNotNumberError()
+						if (userMonth >= 6 && userMonth <= 8) throw new IsNotHolidays()
+						if (userScore < 1 || userScore > 100) throw new IsScoreError()
+						
+					} catch (error) {
+						if (error instanceof IsNotNumberError) {
+							this.formResult.innerText = `${error.message}`
+							this.formResult.style.color = "red"
+						} else if (error instanceof IsNotHolidays) {
+							this.formResult.innerText = `${error.message}`
+						} else if (error instanceof IsScoreError) {
+							this.formResult.innerText = `${error.message}`
+						} else {
+							console.log(error.message)
+						}
+						return false
+					}
+					if (userMonth < 5 || userMonth > 8 || userScore < 90) {
+							this.formResult.innerText = "Можна виправити оцінку"
+							this.formResult.style.color = "green"
+						} else {
+							this.formResult.innerText = "Неможна виправити оцінку"
+							this.formResult.style.color = "orange"
+						}
+				}
+				render(containerSelector) {
+					const formElement = document.createElement("form")
+					formElement.className = "results4__form"
+					formElement.setAttribute("action", "#")
+
+					const formLabelMonth = document.createElement("label")
+					formLabelMonth.className = "results4__label"
+					formLabelMonth.setAttribute("for", "i1")
+					formLabelMonth.innerText = "Місяць: "
+					formElement.append(formLabelMonth)
+					const formInputMonth = document.createElement("input")
+					formInputMonth.className = "results4__input"
+					formInputMonth.setAttribute("id", "i1")
+					formInputMonth.setAttribute("type", "text")
+					formLabelMonth.append(formInputMonth)
+
+					const formLabelScore = document.createElement("label")
+					formLabelScore.className = "results4__label"
+					formLabelScore.setAttribute("for", "i2")
+					formLabelScore.innerText = "Оцінка: "
+					formElement.append(formLabelScore)
+					const formInputscore = document.createElement("input")
+					formInputscore.className = "results4__input"
+					formInputscore.setAttribute("id", "i2")
+					formInputscore.setAttribute("type", "text")
+					formLabelScore.append(formInputscore)
+
+					const formButton = document.createElement("button")
+					formButton.className = "results4__btn"
+					formButton.setAttribute("type", "button")
+					formButton.innerText = "Перевірити"
+					formElement.append(formButton)
+
+					const formResult = document.createElement("div")
+					formResult.className = "results4__result"
+					this.formResult = formResult
+					formElement.append(formResult)
+
+					if (containerSelector) document.querySelector(containerSelector).append(formElement)
+				}
+			}
+			window.onload = function () {
+				const form = new Validator()
+				form.render(".results4")
+				const btn = document.querySelector(".results4__btn")
+				btn.addEventListener("click", form.validateDate.bind(form))
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули)
+								та оцінку (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку
+								(якщо оцінка погана і це не останній місяць у семестрі) . Обробку усіх помилок зробити з
+								використанням відповідних класів.
+							</p>
+						</a>
+					</div>
+					<div class="results4">
+						<!-- <form action="#" class="results4__form">
+							<label for="i1" class="results4__label">
+								Місяць
+								<input id="i1" type="number" class="results4__input" />
+							</label>
+							<label for="i2" class="results4__label">
+								Оцінка
+								<input id="i2" type="number" class="results4__input" />
+							</label>
+							<button type="button" class="results4__btn">Перевірити</button>
+							<div class="results4__result"></div>
+						</form> -->
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+		<script>
+			"use strict"
+			// Створити клас Client. На основі цього класу створити клас GoldenClient.
+			// Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції:
+			// -Вивести усіх простих клієнтів;
+			// -Вивести усіх клієнтів GoldenClient;
+			// -Знайти сумарну кількість грошей на рахунку;
+
+
+			// Побачив що умова другої задачі зв'язана з першою, тому стало цікаво що буде якщо я об'єднаю ці дві перші задачі в одну
+			class Client {
+				constructor(id, fullName, balance) {
+					this.id = id
+					this.fullName = fullName
+					this.balance = balance
+				}
+				addMoney() {
+					let addSum = parseInt(this.formInput.value)
+					this.balance += addSum
+					this.displayBalance.innerText = `Баланс на рахунку: ${this.balance}`
+				}
+				withdrawMoney() {
+					let withdrawSum = parseInt(this.formInput.value)
+					this.balance -= withdrawSum
+					this.displayBalance.innerText = `Баланс на рахунку: ${this.balance}`
+				}
+
+				render(containerSelector) {
+					// Form
+					const accountForm = document.createElement("form")
+					accountForm.setAttribute("action", "#")
+					accountForm.className = "client-account"
+					this.accountForm = accountForm
+					// Label
+					const formLabel = document.createElement("label")
+					formLabel.innerText = "Будь ласка введіть суму: "
+					formLabel.setAttribute("for", "i1")
+					formLabel.className = "client-account__label"
+					accountForm.append(formLabel)
+
+					// Input
+					const formInput = document.createElement("input")
+					formInput.setAttribute("id", "i1")
+					formInput.setAttribute("type", "number")
+					formInput.className = "client-account__input"
+					this.formInput = formInput
+					formLabel.append(formInput)
+
+					// Add money button
+					const addMoneyButton = document.createElement("button")
+					addMoneyButton.setAttribute("type", "button")
+					addMoneyButton.className = "client-account__btn"
+					addMoneyButton.innerText = "Додати гроші"
+					addMoneyButton.onclick = this.addMoney.bind(this)
+					accountForm.append(addMoneyButton)
+
+					// Withdraw Money button
+					const withdrawMoneyButton = document.createElement("button")
+					withdrawMoneyButton.setAttribute("type", "button")
+					withdrawMoneyButton.className = "client-account__btn"
+					withdrawMoneyButton.innerText = "Зняти готівку"
+					withdrawMoneyButton.onclick = this.withdrawMoney.bind(this)
+					accountForm.append(withdrawMoneyButton)
+
+					// Balance
+					const displayBalance = document.createElement("div")
+					displayBalance.innerText = `Баланс на рахунку: ${this.balance}`
+					this.displayBalance = displayBalance
+					accountForm.append(displayBalance)
+
+					if (containerSelector) document.querySelector(containerSelector).append(accountForm)
+				}
+				toString() {
+					return `ID: ${this.id}, Ім'я: ${this.fullName}, Грошей на рахунку: ${this.balance}`
+				}
+			}
+
+			class GoldenClient extends Client {
+				constructor(id, fullName, balance, creditLimit, creditPercent) {
+					super(id, fullName, balance)
+					this.creditLimit = creditLimit
+					this.creditPercent = creditPercent
+					this.creditAmount = creditLimit
+				}
+				getCreditPercent() {
+					// Здається я тут натупив з формулою:(
+					const creditTaxAmount = ((this.creditLimit - this.balance) / 100) * this.creditPercent
+					return creditTaxAmount
+				}
+				addMoney() {
+					super.addMoney()
+				}
+				withdrawMoney() {
+					const withdrawSum = parseInt(this.formInput.value)
+					const percentAmount = this.getCreditPercent()
+					console.log(this.getCreditPercent())
+					if (withdrawSum <= this.balance) {
+						this.balance -= withdrawSum + percentAmount
+						this.displayBalance.innerText = `Баланс на рахунку: ${this.balance}`
+						// super.withdrawMoney()
+					} else {
+						const displayError = document.createElement("div")
+						displayError.innerText = `Недостатньо коштів`
+						this.displayError = displayError
+						this.accountForm.append(displayError)
+					}
+				}
+				render(containerSelector) {
+					super.render(containerSelector)
+				}
+				toString() {
+					return `ID: ${this.id}, Ім'я: ${this.fullName}, Грошей на рахунку: ${this.balance}`
+				}
+			}
+			
+			// Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції:
+			// -Вивести усіх простих клієнтів;
+			// -Вивести усіх клієнтів GoldenClient;
+			// -Знайти сумарну кількість грошей на рахунку;
+			class Bank {
+				constructor(clients) {
+					this.clients = clients
+				}
+				getSimpleClients() {
+					return this.clients.filter(
+						(client) => client instanceof Client && !(client instanceof GoldenClient)
+					)
+				}
+				getGoldenClients() {
+					return this.clients.filter((client) => client instanceof GoldenClient)
+				}
+				getTotalSum() {
+					return this.clients.reduce((sum, client) => sum + client.balance, 0)
+				}
+				render(containerSelector) {
+					const bankContainer = document.createElement("div")
+					bankContainer.className = "bank"
+
+					// Заголовок
+					const titleForSimpleClientsList = document.createElement("h2")
+					titleForSimpleClientsList.className = "bank__title"
+					titleForSimpleClientsList.innerText = "Прості клієнти:"
+					bankContainer.append(titleForSimpleClientsList)
+
+					// Список простих клієнтів
+					const simpleClientsList = document.createElement("ul")
+					simpleClientsList.className = "bank__list"
+					bankContainer.append(simpleClientsList)
+					// Пункти списку
+					for (const simpleClient of this.getSimpleClients()) {
+						const simpleClientsItem = document.createElement("li")
+						simpleClientsItem.className = "bank__item"
+						simpleClientsItem.innerText = `id: ${simpleClient.id}, name: ${simpleClient.fullName}, balance: ${simpleClient.balance}`
+						simpleClientsList.append(simpleClientsItem)
+					}
+
+					// Список Клієнтів GoldenClient
+					const goldenClientsList = document.createElement("ul")
+					goldenClientsList.className = "bank__list"
+					bankContainer.append(goldenClientsList)
+					// Пункти списку
+					for (const goldenClient of this.getGoldenClients()) {
+						const goldenClientsItem = document.createElement("li")
+						goldenClientsItem.className = "bank__item"
+						goldenClientsItem.innerText = `id: ${goldenClient.id}, name: ${goldenClient.fullName}, balance: ${goldenClient.balance}`
+						goldenClientsList.append(goldenClientsItem)
+					}
+
+					// Загальна сума грошей
+					const totalBalance = document.createElement("h2")
+					titleForSimpleClientsList.className = "bank__title"
+					titleForSimpleClientsList.innerText = `Загальна сума: ${this.getTotalSum()}`
+					bankContainer.append(totalBalance)
+
+					if(containerSelector) document.querySelector(containerSelector).append(bankContainer)
+				}
+			}
+			window.onload = function () {
+				const client1 = new Client(1, "Name Surname", 100000)
+				client1.render(".results")
+				const client2 = new Client(2, "Name2 Surname2", 200000)
+				client2.render(".results")
+
+				const goldenClient1 = new GoldenClient(3, "Golden Client", 300000, 5000000, 2)
+				goldenClient1.render(".results")
+				const goldenClient2 = new GoldenClient(4, "Golden2 Client2", 400000, 5000000, 2)
+				goldenClient2.render(".results")
+
+				const bank = new Bank([client1, client2, goldenClient1, goldenClient2])
+				bank.render(".solution__container")
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>Створити клас Client.</p>
+							<img src="img/1.jpg" alt="table" class="img" />
+							<p>На основі цього класу створити клас GoldenClient</p>
+							<img src="img/2.jpg" alt="table" />
+							<h2 class="list__title">+Задача 2</h2>
+							<p>Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції</p>
+							<ul>
+								<li>Вивести усіх простих клієнтів;</li>
+								<li>Вивести усіх клієнтів GoldenClient;</li>
+								<li>Знайти сумарну кількість грошей на рахунку;</li>
+							</ul>
+						</a>
+					</div>
+					<div class="results"></div>
+					<!-- <div class="results">
+						<form action="#" class="client-account">
+							<label for="i1" class="client-account__label">
+								Будь ласка введіть суму:
+								<input id="i1" type="number" class="client-account__input" />
+							</label>
+							<button type="button" class="client-account__btn">Додати гроші</button>
+							<button type="button" class="client-account__btn">Зняти готівку</button>
+						</form>
+					</div> -->
+					<!-- <div class="bank">
+						<h2 class="bank__title">Прості клієнти:</h2>
+						<ul class="bank__list">
+							<li class="bank__item"></li>
+							<li class="bank__item"></li>
+							<li class="bank__item"></li>
+						</ul>
+						<h2 class="bank__title">Клієнти GoldenClient:</h2>
+						<ul class="bank__list">
+							<li class="bank__item"></li>
+							<li class="bank__item"></li>
+							<li class="bank__item"></li>
+						</ul>
+						<h2 class="bank__title">Сумарна кількість грошей</h2>
+					</div> -->
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

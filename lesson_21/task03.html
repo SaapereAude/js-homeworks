@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+		<script>
+			"use strict"
+			//Умова задачі: Розробити Класи
+			class CommonConfigurations {
+				constructor(src, coordinateX, coordinateY, interval) {
+					this.src = src
+					this.coordinateX = coordinateX
+					this.coordinateY = coordinateY
+					this.interval = interval
+				}
+				getRandomValue(min = 0, max = 100) {
+					return min + Math.floor(Math.random() * (max - min + 1))
+				}
+				render(containerSelector) {
+					// const box = document.createElement("div")
+					// box.className = "results__img"
+					// box.style.position = "relative"
+					// box.style.top = "50" + "%"
+
+					const image = document.createElement("img")
+					image.setAttribute("src", this.src)
+					image.style.position = "relative"
+					image.style.width = 50 + "px"
+					image.style.top = this.coordinateY + "%"
+					image.style.left = this.coordinateX + "%"
+					this.image = image
+					// box.append(image)
+					if (containerSelector) document.querySelector(containerSelector).append(image)
+				}
+				changeHorizontalPosition() {
+					setInterval(() => {
+						this.image.style.left = this.getRandomValue(0, 100) + "%"
+						this.image.style.transition = 0.8 + "s"
+					}, this.interval)
+				}
+			}
+			class House extends CommonConfigurations {
+				constructor(src, coordinateX, coordinateY, interval) {
+					super(src, coordinateX, coordinateY, interval)
+				}
+				changeScale() {
+					setInterval(() => {
+						this.image.style.transform = `scale(${Math.random()})`
+						this.image.style.transition = 0.8 + "s"
+					}, this.interval)
+				}
+			}
+
+			class Dog extends CommonConfigurations {
+				constructor(src, coordinateX, coordinateY, interval) {
+					super(src, coordinateX, coordinateY, interval)
+				}
+			}
+			class Bird extends CommonConfigurations {
+				constructor(src, coordinateX, coordinateY, interval) {
+					super(src, coordinateX, coordinateY, interval)
+				}
+				changeVerticalPosition() {
+					setInterval(() => {
+						this.image.style.top = this.getRandomValue(0, 10) + "%"
+						this.image.style.transition = 0.8 + "s"
+					}, this.interval)
+				}
+			}
+			window.onload = function () {
+				const house = new House("https://freesvg.org/img/1482587631.png", 50, 50, 500)
+				house.render(".results3")
+				house.changeScale()
+				const dog = new Dog("https://www.svgrepo.com//show/24782/dog.svg", 25, 80, 1000)
+				dog.render(".results3")
+				dog.changeHorizontalPosition()
+
+				const bird = new Bird(
+					"https://www.pinclipart.com/picdir/big/67-670528_svg-transparent-birds-svg-swift-bird-svg-clipart.png",
+					50,
+					10,
+					1000
+				)
+				bird.render(".results3")
+				bird.changeHorizontalPosition()
+				bird.changeVerticalPosition()
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>Розробити Класи</p>
+							<img src="img/3.jpg" alt="" />
+						</a>
+					</div>
+					<div class="results3"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
