@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+		<script>
+			"use strict"
+			//Умова задачі: Вивести назву дня
+			window.onload = function () {
+				const currentDate = new Date()
+				const message = currentDate.toLocaleDateString("uk-UA", { weekday: "long" })
+				// На сторінку виводиться назва дня за маленької літери, я не знайшов іншого способу зробити слово з великої літери, тому цікаво було б дізнатися чи це правильний спосіб і які є простіші способи?
+				document.querySelector(".results").innerText = message.charAt(0).toUpperCase() + message.slice(1)
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>Вивести назву дня</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

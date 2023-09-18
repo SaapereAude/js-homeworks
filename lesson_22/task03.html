@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+		<script>
+			"use strict"
+			//Умова задачі: Визначити поточну пору року
+			window.onload = function () {
+				const currentMonth = new Date().getMonth()
+				let message
+				switch (currentMonth) {
+					case 11:
+					case 0:
+					case 1:
+						message = "Зима"
+						break
+					case 2:
+					case 3:
+					case 4:
+						message = "Весна"
+						break
+					case 5:
+					case 6:
+					case 7:
+						message = "Літо"
+						break
+					case 8:
+					case 9:
+					case 10:
+						message = "Осінь"
+						break
+
+					default:
+						break
+				}
+				document.querySelector(".results").innerText = message
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>Визначити поточну пору року</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 7</title>
+		<script>
+			"use strict"
+			//Умова задачі: Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.
+			window.onload = function () {
+				function getRentEndTime(e) {
+					const currentDate = new Date()
+					const userHours = parseInt(document.getElementById("i1").value)
+					currentDate.setHours(currentDate.getHours() + userHours)
+
+					const targetElement = e.target
+					if (targetElement.closest(".results__button")) {
+						document.querySelector(
+							".results"
+						).innerText = `Кінцевий час повернення ${currentDate.toLocaleString("uk-UA")}`
+					}
+				}
+				document.querySelector(".results__form").addEventListener("click", getRentEndTime)
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task07">
+			<section class="page-task07__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task07.html" class="list__link">
+							<h2 class="list__title">Задача 7</h2>
+							<p>Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.</p>
+						</a>
+					</div>
+					<div class="results">
+						<form action="#" class="results__form">
+							<label for="i1" class="results__label">
+								Будь ласка введіть кількість годин:
+								<input id="i1" type="text" class="results__input" />
+							</label>
+							<button type="button" class="results__button">Визначити кінцевий час повернення</button>
+						</form>
+						<div class="results__age"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

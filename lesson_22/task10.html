@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 10</title>
+		<script>
+			"use strict"
+			//Умова задачі: Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і  вставкою.
+			window.onload = function () {
+				function getRandomValue(minValue, maxValue) {
+					return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+				}
+				function generateArray(amount, minValue, maxValue) {
+					const array = []
+					for (let i = 0; i < amount; i++) {
+						const randomNumber = getRandomValue(minValue, maxValue)
+						array.push(randomNumber)
+						
+						// Формування масиву без елементів які повторюються
+						// if (!array.includes(randomNumber)) {
+						// 	array.push(randomNumber)
+						// }
+					}
+					return array
+				}
+				// Сортування бульбашкою
+				function getBubbleSortTime(array) {
+					// const array = generateArray(1000, 1, 800)
+					const startTime = new Date()
+					let changed
+					do {
+						changed = false
+						for (let i = 1; i < array.length; i++) {
+							if (array[i - 1] > array[i]) {
+								let tmp = array[i - 1]
+								array[i - 1] = array[i]
+								array[i] = tmp
+								changed = true
+							}
+						}
+					} while (changed)
+					const finishTime = new Date()
+					let result = finishTime - startTime
+					document.querySelector(".results_bubble").innerText = `Сортування бульбашкою: ${result}мс`
+					document.querySelector(
+						".array_bubble"
+					).innerHTML = `Масив після сортування бульбашкою: ${array.join(", ")}`
+				}
+
+				// Сортування вставкою:
+				function getInsertionSortTime(array) {
+					// const array = generateArray(1000, 1, 800)
+					const startTime = new Date()
+					for (let j = 1; j < array.length; j++) {
+						const currentElement = array[j]
+						let i = j - 1
+						while (i >= 0 && array[i] > currentElement) {
+							array[i + 1] = array[i]
+							i = i - 1
+						}
+						array[i + 1] = currentElement
+					}
+					const finishTime = new Date()
+					let result = finishTime - startTime
+					document.querySelector(".results_insert").innerText = `Сортування вставкою: ${result}мс`
+					document.querySelector(".array_insert").innerHTML = `Масив після сортування вставкою: ${array.join(
+						", "
+					)}`
+				}
+				const array = generateArray(1000, 1, 800)
+				document.querySelector(".array").innerText = `Масив до сортування: ${array.join(", ")}`
+
+				getBubbleSortTime(array.slice())
+				getInsertionSortTime(array.slice())
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task10">
+			<section class="page-task11__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task10.html" class="list__link">
+							<h2 class="list__title">Задача 10</h2>
+							<p>
+								Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і
+								вставкою.
+							</p>
+						</a>
+					</div>
+
+					<div class="results results_bubble"></div>
+					<div class="results results_insert"></div>
+					<div class="array"></div>
+					<div class="array array_bubble"></div>
+					<div class="array array_insert"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

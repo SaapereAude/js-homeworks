@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 8</title>
+		<script>
+			"use strict"
+			//Умова задачі: Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв’язання задачі.
+			window.onload = function () {
+				function getRandomValue(min, max) {
+					return min + Math.floor(Math.random() * (max - min + 1))
+				}
+				function mathTask() {
+					const num1 = getRandomValue(1, 50)
+					const num2 = getRandomValue(1, 50)
+
+					const startTime = new Date()
+					const correctAnswer = num1 + num2
+					const userAnswer = parseInt(prompt(`${num1}+${num2}: `))
+					if (userAnswer === correctAnswer) alert("Так, це правильна відповідь")
+					else alert("Ви відповіли неправльно")
+					const finishTime = new Date()
+
+					const spentTime = (finishTime - startTime) / 1000
+					document.querySelector(".results").innerText = `Ви витратили ${spentTime}c на розв'язок прикладу.`
+				}
+				mathTask()
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task08">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task08.html" class="list__link">
+							<h2 class="list__title">Задача 8</h2>
+							<p>
+								Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано
+								для розв’язання задачі.
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+		<script>
+			"use strict"
+			// Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)
+
+			window.onload = function () {
+				const currentHours = new Date().getHours()
+				let message
+				if (currentHours >= 0 && currentHours < 6) message = "Доброї ночі"
+				else if (currentHours >= 6 && currentHours < 12) message = "Доброго ранку"
+				else if (currentHours >= 12 && currentHours < 18) message = "Доброго дня"
+				else message = "Доброго вечора"
+				document.querySelector(".results").innerText = message
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>
+								Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

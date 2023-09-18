@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 5</title>
+		<script>
+			"use strict"
+			//Умова задачі: Користувач вводить дату народження. Визначити, скільки йому повних років.
+			window.onload = function () {
+				function getUserAge(e) {
+					const currentDate = new Date()
+					const userDate = document.getElementById("i1").value
+					const userBirthday = new Date(userDate)
+					const userAge = currentDate - userBirthday
+					const result = new Date(userAge).getFullYear() - 1970
+					const targetElement = e.target
+					if (targetElement.closest(".results__button")) {
+						document.querySelector(".results__age").innerText = result
+					}
+				}
+				document.querySelector(".results__form").addEventListener("click", getUserAge)
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task05">
+			<section class="page-task05__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task05.html" class="list__link">
+							<h2 class="list__title">Задача 5</h2>
+							<p>Користувач вводить дату народження. Визначити, скільки йому повних років.</p>
+						</a>
+					</div>
+					<div class="results">
+						<form action="#" class="results__form">
+							<label for="i1" class="results__label">
+								Будь ласка введіть дату народження:
+								<input id="i1" type="text" class="results__input" />
+							</label>
+							<button type="button" class="results__button">Порахувати</button>
+						</form>
+						<div class="results__age"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

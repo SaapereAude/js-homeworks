@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 9</title>
+		<script>
+			"use strict"
+			//Умова задачі: Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
+			window.onload = function () {
+				function checkExpirationDate(year, month, day, daysNum) {
+					const currentDate = new Date()
+					const manufactureDate = new Date(year, month - 1, day)
+					const expirationDate = new Date(manufactureDate.setDate(manufactureDate.getDate() + daysNum))
+					let message
+					if (currentDate >= expirationDate) message = "Йогурт непридатний для вживання"
+					else message = "Йогурт придатний для вживання"
+					document.querySelector(".results").innerText = message
+				}
+				checkExpirationDate(2023, 9, 18, 14)
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task9">
+			<section class="page-task9__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task9.html" class="list__link">
+							<h2 class="list__title">Задача 9</h2>
+							<p>
+								Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності.
+								Визначити чи є він придатним на даний момент.
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
