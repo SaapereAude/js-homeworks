@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 6</title>
+		<script>
+			"use strict"
+			//Умова задачі:  Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+			window.onload = function () {
+				const booksArray = [
+					{ title: "book1", releaseYear: 2000, author: "author1" },
+					{ title: "book2", releaseYear: 2001, author: "author2" },
+					{ title: "book3", releaseYear: 2002, author: "author3" },
+					{ title: "book4", releaseYear: 2005, author: "author2" },
+					{ title: "book5", releaseYear: 2006, author: "author2" },
+				]
+				const booksAuthor = booksArray.map((el) => el.author)
+				let map = new Map()
+				for (const book of booksAuthor) {
+					let elCount = map.get(book) ?? 0
+					map.set(book, elCount + 1)
+				}
+				map.forEach((value, key) => {
+					document.querySelector(".results").innerHTML += `<p>${key} - ${value} книг(и)</p>`
+				})
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task06">
+			<section class="page-task06__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task06.html" class="list__link">
+							<h2 class="list__title">Задача 6</h2>
+							<p>
+								Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+							</p>
+						</a>
+						<div class="results"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

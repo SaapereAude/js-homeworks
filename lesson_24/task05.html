@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 5</title>
+		<script>
+			"use strict"
+			// Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку максимальне.
+			window.onload = function () {
+				const agesArray = [7, 7, 10, 15, 8, 12, 15, 12, 7]
+				let map = new Map()
+				for (const el of agesArray) {
+					let elCount = map.get(el) ?? 0
+					map.set(el, elCount+1)
+				}
+				
+				map.forEach((value, key) => {
+					document.querySelector(".results").innerHTML += `<p>${key} - ${value} рази</p>`
+				})
+				document.querySelector(".results").append(`максимальний вік - ${Math.max(...agesArray)}`)
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task05">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task05.html" class="list__link">
+							<h2 class="list__title">Задача 5</h2>
+							<p>
+								Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і
+								максимальне.
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

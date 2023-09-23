@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 10</title>
+		<script>
+			"use strict"
+			//Умова задачі: Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії. Підрахувати скільки студентів з гуртка з історії також відвідують гурток з математики. Також підрахувати скільки всього студентів відвідують хоча б один гурток.
+			window.onload = function () {
+				const mathGroupArray = [
+					"student1",
+					"student2",
+					"student3",
+					"student4",
+					"student5",
+					"student6",
+					"student7",
+					"student8",
+					"student9",
+					"student10",
+				]
+				const historyGroupArray = [
+					"student5",
+					"student7",
+					"student10",
+					"student2",
+					"student11",
+					"student12",
+					"student13",
+					"student14",
+					"student15",
+					"student16",
+					"student17",
+				]
+				const mathGroupStudents = new Set(mathGroupArray)
+				const historyGroupStudents = new Set(historyGroupArray)
+				
+				const bothGroupsStudents = [...mathGroupStudents].filter((student) =>historyGroupStudents.has(student) )
+
+				const atLeastOneGroupStudents = new Set ([...mathGroupStudents, ...historyGroupStudents])
+
+				document.querySelector(".results").innerHTML += `
+					<p>
+						Студенти гуртка з математики: ${mathGroupArray}
+					</p>
+					<p>
+						Студенти гуртка з історії: ${historyGroupArray}
+					</p>
+					<p>
+						Кількість студентів з гуртка з історії, які також відвідують гурток з математики: 
+						${bothGroupsStudents.length}: ${bothGroupsStudents}
+					</p>
+					<p>
+						Загальна кількість студентів, які відвідують хоча б один гурток: 
+						${atLeastOneGroupStudents.size}
+					</p>
+				`
+				console.log(atLeastOneGroupStudents);
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task10">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task10.html" class="list__link">
+							<h2 class="list__title">Задача 10</h2>
+							<p>
+								Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії. Підрахувати
+								скільки студентів з гуртка з історії також відвідують гурток з математики. Також підрахувати
+								скільки всього студентів відвідують хоча б один гурток.
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

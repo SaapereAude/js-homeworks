@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 8</title>
+		<script>
+			"use strict"
+			//Умова задачі: Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів.
+			window.onload = function () {
+				const studentsArray = [
+					{ fullName: "student1", course: 1, faculty: "faculty12" },
+					{ fullName: "student2", course: 3, faculty: "faculty11" },
+					{ fullName: "student3", course: 4, faculty: "faculty11" },
+					{ fullName: "student4", course: 1, faculty: "faculty12" },
+					{ fullName: "student5", course: 2, faculty: "faculty12" },
+					{ fullName: "student6", course: 2, faculty: "faculty11" },
+					{ fullName: "student7", course: 5, faculty: "faculty12" },
+					{ fullName: "student8", course: 4, faculty: "faculty15" },
+					{ fullName: "student9", course: 5, faculty: "faculty12" },
+					{ fullName: "student10", course: 3, faculty: "faculty15" },
+				]
+				let faculties = new Set(studentsArray.map((el) => el.faculty))
+				document.querySelector(
+					".results"
+				).innerHTML = `<p>Кількість різних факультетів: ${faculties.size}:</p>`
+
+				let map = new Map()
+				let studentsOnEachFaculty = studentsArray.map((el) => el.faculty)
+				for (const el of studentsOnEachFaculty) {
+					let elCount = map.get(el) ?? 0
+					map.set(el, elCount + 1)
+				}
+
+				map.forEach((value, key) => {
+					document.querySelector(".results").innerHTML += `<p>${key} - ${value} студент(и)</p>`
+				})
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task08">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task08.html" class="list__link">
+							<h2 class="list__title">Задача 8</h2>
+							<p>
+								Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та
+								кількість студентів кожного з курсів.
+							</p>
+						</a>
+					</div>
+					<div class="results">
+						<p></p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

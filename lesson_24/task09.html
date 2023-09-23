@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 9</title>
+		<script>
+			"use strict"
+			//Умова задачі: Дано масив показів температур. Підрахувати кількість входжень кожного із показів let temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9] Заокруглити вверх значення та підрахувати кількість різних показів.
+
+			window.onload = function () {
+				let temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
+				let map = new Map()
+				for (const el of temperatures) {
+					let elCount = map.get(el) ?? 0
+					map.set(el, elCount + 1)
+				}
+				map.forEach((value, key) => {
+					document.querySelector(".results").innerHTML += `<p>${key} - ${value} рази</p>`
+				})
+				let ceiledTemperatures = []
+				for (const el of temperatures) {
+					ceiledTemperatures.push(Math.ceil(el))
+				}
+				let diffTemperaures = new Set(ceiledTemperatures).size
+				document.querySelector(".results").innerHTML += `<p>Кількість різних показів: ${diffTemperaures}</p>`
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task09">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task09.html" class="list__link">
+							<h2 class="list__title">Задача 9</h2>
+							<p>
+								Дано масив показів температур. Підрахувати кількість входжень кожного із показів let
+								temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9] Заокруглити вверх значення та
+								підрахувати кількість різних показів.
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

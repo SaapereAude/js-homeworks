@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 11</title>
+		<script>
+			"use strict"
+			//Користувач може змінювати колір фону, що вибирає користувач з використанням <input type="color">. Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу.
+
+			window.onload = function () {
+				const pageBody = document.body
+				const formCounter = document.querySelector(".form__counter")
+				const formInput = document.querySelector(".form__input")
+				function changeBackgoundColor(e) {
+					let bgColor = formInput.value
+					localStorage.setItem("backgroundColor", bgColor)
+					pageBody.style.backgroundColor = bgColor
+				}
+				function countChanges(e) {
+					let changesCounter = parseInt(sessionStorage.getItem("colorChanges") ?? 0) + 1
+					sessionStorage.setItem("colorChanges", changesCounter)
+					formCounter.innerText = `Кількість змін кольору: ${changesCounter}`
+				}
+				formInput.value = localStorage.getItem("backgroundColor")
+				pageBody.style.backgroundColor = localStorage.getItem("backgroundColor")
+				document.addEventListener("input", changeBackgoundColor)
+				document.addEventListener("change", countChanges)
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task11">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task11.html" class="list__link">
+							<h2 class="list__title">Задача 11</h2>
+							<p>
+								Користувач може змінювати колір фону, що вибирає користувач з використанням input type="color"
+								/>. Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати
+								кількість змін протягом одного сеансу.
+							</p>
+						</a>
+					</div>
+					<div class="results">
+						<form action="#" class="results__form form">
+							<label for="i1" class="form__label">
+								<input type="color" id="i1" class="form__input" />
+							</label>
+							<div class="form__counter"></div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

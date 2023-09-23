@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 12</title>
+		<script>
+			"use strict"
+			// Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage). Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm). Якщо користувач натискає на «Ок», то видаляти цю задачу.
+			window.onload = function () {
+				let tasksArray = ["Task1", "Task2", "Task3", "Task4", "Task5", "Task6", "Task7"]
+
+				function getRandomTask(list, interval) {
+					let intervalId = setInterval(() => {
+						if (list.length === 0) {
+							alert("Немає задач")
+							clearInterval(intervalId)
+							return
+						}
+						let randomIndex = Math.floor(Math.random() * list.length)
+						let randomTask = tasksArray[randomIndex]
+						let userResult = confirm(randomTask)
+						if (userResult) {
+							list.splice(randomIndex, 1)
+							let tasksArrayList = JSON.stringify(tasksArray)
+							localStorage.setItem("tasklist", tasksArrayList)
+							alert("Задача виконана")
+						} else {
+							alert("Спробуйте пізніше")
+						}
+					}, interval)
+				}
+
+				getRandomTask(tasksArray, 3000)
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task12">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task12.html" class="list__link">
+							<h2 class="list__title">Задача 12</h2>
+							<p>
+								Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage).
+								Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням
+								confirm). Якщо користувач натискає на «Ок», то видаляти цю задачу.
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
