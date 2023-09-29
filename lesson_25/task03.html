@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 3</title>
+		<script>
+			"use strict"
+			//Умова задачі: Створити генератор, який би випадковим чином поступово генерував вказану кількість парних чисел.
+			window.onload = function () {
+				function* getRandomEvenNumbers(quantityOfNumbers, minValue, maxValue) {
+					for (let i = 0; i < quantityOfNumbers; ) {
+						const randomNumber = minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+						if (randomNumber % 2 === 0) {
+							yield randomNumber
+							i++
+						}
+					}
+				}
+				let randomEvenNumbers = [...getRandomEvenNumbers(10, 0, 1000)]
+				document.querySelector(".results").innerHTML = randomEvenNumbers
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task03">
+			<section class="page-task03__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task03.html" class="list__link">
+							<h2 class="list__title">Задача 3</h2>
+							<p>
+								Створити генератор, який би випадковим чином поступово генерував вказану кількість парних
+								чисел.
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

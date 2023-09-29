@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 4</title>
+		<script>
+			"use strict"
+			//Умова задачі:Використовуючи один з АРІ https://github.com/public-apis/public-apis#animals та функцію fetch організувати завантаження та відображення даних
+			window.onload = function () {
+				// async function getFactAboutCat (){
+				// 	let response = await fetch ("https://cat-fact.herokuapp.com/facts")
+				// 	if (response.ok){
+				// 		const data = await response.json()
+				// 		console.log(data);
+				// 		document.querySelector(".results").innerHTML = data[0].text
+				// 	}
+				// }
+				// getFactAboutCat()
+				//========================================================================================================================================================
+				// fetch("https://cat-fact.herokuapp.com/facts")
+				fetch("https://cat-fact.herokuapp.com/facts/random")
+					.then((response) => response.json())
+					.then((data) => {
+						console.log(data)
+						// Щось тут попадаються дуже дивні факти про котів типу просто набору літер або "))))))", не знаю чи це правильно, чи може це така API чи може я щось не те зробив.
+						document.querySelector(".results").innerHTML = data.text
+						// закоментований код це вже буде не випадковий факт, а завжди перший із отриманного масиву
+						// if (data.length > 0) {
+						// 	document.querySelector(".results").innerHTML = data[0].text
+						// }
+					})
+					.catch((error) => {
+						console.error("Помилка", error)
+					})
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task04">
+			<section class="page-task04__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task04.html" class="list__link">
+							<h2 class="list__title">Задача 4</h2>
+							<p>
+								Використовуючи один з АРІ https://github.com/public-apis/public-apis#animals та функцію fetch
+								організувати завантаження та відображення даних
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>

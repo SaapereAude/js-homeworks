@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Task 1</title>
+		<script>
+			"use strict"
+			//Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера виводиться оператор (050….  MTC, 096…  Kyivstar, ….)
+			class PhoneNumber {
+				constructor() {
+					this.phoneNumber
+				}
+
+				getOperatorName() {
+					const phoneNumberPrefix = this.phoneNumber.slice(0, 6)
+					switch (phoneNumberPrefix) {
+						case "+38050":
+						case "+38095":
+						case "+38066":
+							return "Vodafone"
+						case "+38063":
+						case "+38093":
+						case "+38096":
+							return "Kyivstar"
+						default:
+							return "Невідомий оператор"
+					}
+				}
+				showOperatorName() {
+					this.phoneNumber = this.formInput.value
+					this.messageDiv.innerText = `${this.getOperatorName()}`
+				}
+				[Symbol.toPrimitive](hint) {
+					if (hint === "string") {
+						return this.getOperatorName() + " " + this.phoneNumber
+					}
+					return this.phoneNumber
+				}
+
+				render(containerSelector) {
+					const resultForm = document.createElement("form")
+					resultForm.className = "results__form"
+					resultForm.classList.add("form")
+					resultForm.setAttribute("action", "#")
+
+					const formLabel = document.createElement("label")
+					formLabel.setAttribute("for", "i1")
+					formLabel.className = "form__label"
+					formLabel.innerText = "Будь ласка введіть номер телефону"
+					resultForm.append(formLabel)
+
+					const formInput = document.createElement("input")
+					formInput.setAttribute("type", "text")
+					formInput.setAttribute("id", "i1")
+					formInput.className = "form__input"
+					this.formInput = formInput
+
+					formLabel.append(formInput)
+					formInput.addEventListener("change", this.showOperatorName.bind(this))
+
+					const messageDiv = document.createElement("div")
+					messageDiv.className = "form__message"
+					resultForm.append(messageDiv)
+					this.messageDiv = messageDiv
+
+					if (containerSelector) document.querySelector(containerSelector).append(resultForm)
+				}
+			}
+			window.onload = function () {
+				const form = new PhoneNumber()
+				form.render(".results")
+			}
+		</script>
+	</head>
+
+	<body>
+		<main class="page-task01">
+			<section class="page-task01__section solution">
+				<div class="solution__container">
+					<div class="task-list__list list">
+						<a target="_blank" href="task01.html" class="list__link">
+							<h2 class="list__title">Задача 1</h2>
+							<p>
+								Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера
+								виводиться оператор (050….  MTC, 096…  Kyivstar, ….)
+							</p>
+						</a>
+					</div>
+					<div class="results"></div>
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
